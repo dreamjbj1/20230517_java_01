@@ -2,7 +2,7 @@
 SELECT * 
 FROM EMP
 ;
-SELECT ENPNO, ENAME, SAL
+SELECT EMPNO, ENAME, SAL
 FROM EMP
 ;
 
@@ -51,3 +51,113 @@ from emp
 
 select distinct 's' as 단위, sal
 from emp;
+
+
+-- 20번 부서를 제외한 사원 정보를 조회
+select * 
+    from emp
+-- where deptno != 20
+-- where deptno <>= 20
+-- where deptno ^= 20
+-- where not deptno = 20
+    where deptno in (20, 10)
+ ;
+
+-- 20번 부서를 제외한 사원 중 comm()이 null 정보를 조회
+-- 오류   comm = null (=쓰면 안된다) 애초에 null 값은 is null or is not null을 써야한다.
+select * 
+    from emp
+    where not deptno = 20
+     and comm is null       
+;
+
+-- 10, 20, 30 부서를 사원 정보를 조회
+select *
+    from emp
+--    where deptno = 10 or deptno = 20 or  deptno = 30
+    where deptno in(10,20,30)
+;
+-- 10, 20 부서를 제외한 사원 정보를 조회
+select *
+    from emp
+    where not (deptno = 10 or deptno = 20)
+--    where dept != 10 and deptno != 20
+;
+
+select ename, sal
+    from emp
+    where ename like 'S_%'
+; 
+
+-- 사원명의 길이와 byte크기를 조회
+    select length(ename), lengthb(ename)
+    from emp
+    ;
+--    select ' a안 녕 b', length('a 안 녕 b'), lengthb('a 안 녕 b')
+select trim('a안 녕b'), length(trim('a안 녕b')), lengthb(trim('a안 녕b'))
+--    from emp
+     from dual
+     -- 테이블 dual은 임시테이블로 연산이나 간단한 함수 결과값을 조회할 때 사용함.
+;
+-- 사원명의 시작부분 s와 끝나는 부분 s 모두 제거해주세요.
+select Rtrim(Ltrim(ename, 'S'), 'S') from emp;
+-- Ltrim 예시 010제거
+
+-- LPad / Rpad 채워넣기
+-- ename이 총 10자가 되도록 left 쪽에 'S'를 채워주세요.
+select Lpad(ename, 10, 'S') from emp;
+-- ename이 총 10자가 되도록 left 쪽에 ' ' 공백(default)를 채워주세요.
+select Lpad(ename, 10) from emp;
+
+-- 문자열(컬럼) 이어붙이기 
+select concat(ename, comm) from emp;
+select ename || comm from emp;
+select sal || '달러' from emp;
+select concat(sal, '달러') from emp;
+-- substr 엄청 중요 !!
+-- replace
+select replace(ename, 'AM', 'X') from emp;
+
+-- sysdate은 함수는 아니나 명령어가 실행되는 시점에 결과값을 출력해주므로 함수호출과 같음.
+select sysdate from dual;
+select hiredate from emp;
+select hiredate, add_months(hiredate, 1) from emp;
+-- 2023.07.10 (월)
+select sysdate, to_char(sysdate, 'yyyy.mm.dd (dy) hh24:mi:ss')from dual;
+-- 2023.07.10 (월요일)
+select sysdate, to_char(sysdate, 'yyyy.mm.dd (day) hh24:mi:ss')from dual;
+
+alter session set NLS_DATE_FORMAT = 'yyyy-mm-dd hh24:mi:ss';
+select sysdate from dual;
+select * from emp;
+
+-- year 2023 month 09 day 11 hour 13 
+select to_date('2023091113', 'yyyymmddhh24') from dual;
+select add_months(to_date('2023091113', 'yyyymmddhh24'), 5) from dual;
+select next_day(to_date('2023091113', 'yyyymmddhh24'), '수') from dual;
+select next_day(to_date('2023091113', 'yyyymmddhh24'), 4) from dual;
+-- 1:일요일 2: 월요일 3: 화요일 ...
+select last_day(to_date('2023091113', 'yyyymmddhh24')) from dual;
+
+select to_char(empno, '000000') , '$'||trim(to_char(sal, '999,999,999,999'))
+    from emp;
+select to_char(empno, '000000') , trim(to_char(sal, 'L999,999,999,999'))
+    from emp;
+
+select to_number('123,4567,8901', '999,9999,9999')*5 from dual;
+-- 오류 select '123,4567,8901'*5 from dual;
+
+
+select * from emp
+    order by sal desc, ename asc
+    ;
+    
+select ename, sal*12+nvl(comm, 0) salcomm 
+    from emp
+    order by 2 desc, 1 desc
+    ;
+-- job 오름차순
+select * from emp
+--    order by job;
+    order by 3;    
+    
