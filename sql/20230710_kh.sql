@@ -372,7 +372,221 @@ select *
 from employee;
 
 -- 16번 문제
-select emp_name, emp_no
-from employee;
-where
+--select emp_name, emp_no
+--from employee;
+--where
  
+CREATE TABLE USER_CHECK(
+    USER_NO NUMBER PRIMARY KEY,
+    USER_ID VARCHAR2(20) UNIQUE,
+    USER_PWD VARCHAR2(30) NOT NULL,
+    USER_NAME VARCHAR2(30),
+    GENDER VARCHAR2(10) CHECK (GENDER IN ('남', '여')),
+    PHONE VARCHAR2(30),
+    EMAIL VARCHAR2(50)
+);
+INSERT INTO USER_CHECK VALUES(1, 'user01', 'pass01', '홍길동', '남자', 010-1234-5678, 
+'hong123@kh.or.kr');
+select * from USER_CHECK;
+
+create table employee_copy
+as select emp_id, emp_name, salary, dept_title, job_name
+    from employee
+left join department on (dept_code = dept_id)
+left join job using(job_code);
+
+select * from employee_copy;
+
+insert into employee
+values(1,'홍길동', '820114-1010101','hong_kd@kh.or.kr','01099998888','D5','J2','S4',3800000,null,'200',sysdate,null,default);
+
+update employee
+set emp_id = 290
+where emp_name = '홍길동';
+
+delete from employee
+where emp_name = '홍길동';
+
+--create table emp_01(
+--    emp_id number,
+--    emp_name varchar2(30),
+--    dept_title varchar2(20)
+--);
+
+--insert into emp_01(
+--    select emp_id
+--            emp_name,
+--            dept_title
+--    from employee
+--    left join department on(dept_code = dept_id));
+--    
+--select * from employee;
+
+CREATE TABLE EMP_01(
+EMP_ID NUMBER,
+EMP_NAME varchar2(30),
+DEPT_TITLE VARCHAR2(20)
+);
+
+INSERT INTO EMP_01(
+SELECT EMP_ID,
+EMP_NAME,
+DEPT_TITLE
+FROM EMPLOYEE
+LEFT JOIN DEPARTMENT ON (DEPT_CODE = DEPT_ID)
+);
+
+select * 
+from emp_01;
+
+--INSERT ALL
+--WHEN HIRE_DATE < '2000/01/01' THEN
+--INTO EMP_OLD VALUES(EMP_ID, EMP_NAME, HIRE_DATE, SALARY)
+--WHEN HIRE_DATE >= '2000/01/01' THEN
+--INTO EMP_NEW VALUES(EMP_ID, EMP_NAME, HIRE_DATE, SALARY)
+--SELECT EMP_ID, EMP_NAME, HIRE_DATE, SALARY
+--FROM EMPLOYEE;
+
+create table dept_copy
+as select * from department;
+
+update dept_copy
+set dept_title='전략기획팀'
+where dept_id = 'D9';
+
+select * from dept_copy;
+
+--방영수 사원의 급여와 보너스율을 유재식 사원과 동일하게 변경
+create table emp_salary
+as select emp_id, emp_name, dept_code, salary, bonus
+from employee;
+
+update emp_salary
+set salary = (select salary from emp_salary where emp_name='유재식'),
+bonus=(select bonus from emp_salary where emp_name='유재식')
+where emp_name='방명수';
+
+select * from emp_salary
+where emp_name in('유재식','방명수');
+
+-- 각각 쿼리문 작성한 것을 다중 행 다중 열 서브쿼리로 변경
+update emp_salary
+set(salary,bonus)=(select salary, bonus from emp_salary where emp_name = '유재식')
+where emp_name = '방명수';
+
+select * from emp_salary
+where emp_name in('유재식','방명수');
+
+--  update 예시4번
+update EMP_SALARY
+set bonus = 0.3
+where emp_id in(select emp_id 
+from employee 
+join department on(dept_id = dept_code)
+join location on(location_id = local_code)
+where local_name like 'ASIA%');
+
+select * from emp_salary;
+
+-- delete 예시1
+delete from employee
+where emp_name = '장채현';
+
+delete from department
+where dept_id = 'D1';
+
+select * from department;
+
+-- delete 예시2
+delete from department
+where dept_id ='D3';
+
+alter table employee
+disable constraint emp_deptcode_fk cascade;
+
+delete from department
+where dept_id ='D1';
+
+alter table employee
+enable constraint emp_deptcode_fk;
+
+
+
+
+alter table dept_copy
+add(cname varchar2(20));
+
+select * from dept_copy;
+
+alter table dept_copy
+add(lname varchar2(40) default '한국');
+
+select * from dept_copy;
+
+ALTER TABLE DEPT_COPY
+    ADD CONSTRAINT DCOPY_DID_PK PRIMARY KEY(DEPT_ID);
+ALTER TABLE DEPT_COPY    
+    ADD CONSTRAINT DCOPY_DTITLE_UNQ UNIQUE(DEPT_TITLE);
+ALTER TABLE DEPT_COPY
+    MODIFY LNAME CONSTRAINT DCOPY_LNAME_NN NOT NULL;
+    
+SELECT UC.CONSTRAINT_NAME, 
+UC.CONSTRAINT_TYPE,
+UC.TABLE_NAME,
+UCC.COLUMN_NAME,
+UC.SEARCH_CONDITION
+FROM USER_CONSTRAINTS UC
+JOIN USER_CONS_COLUMNS UCC ON (UC.CONSTRAINT_NAME = UCC.CONSTRAINT_NAME)
+WHERE UC.TABLE_NAME = 'DEPT_COPY';
+
+desc dept_copy;
+
+alter table dept_copy
+--    modify dept_id char(3)
+    modify dept_title varchar(30)
+    modify location_id varchar2(2)
+    modify cname char(20)
+    modify lname default '미국';
+
+select * from dept_copy;
+
+alter table dept_copy
+drop column dept_id;
+
+select * from dept_copy;
+
+CREATE TABLE EMP_DEPT_D1
+AS SELECT EMP_ID, EMP_NAME, DEPT_CODE, HIRE_DATE
+FROM EMPLOYEE
+WHERE 1 = 0;
+
+CREATE TABLE EMP_MANAGER
+AS SELECT EMP_ID, EMP_NAME, MANAGER_ID
+FROM EMPLOYEE
+WHERE 1 = 0;
+
+drop table EMP_DEPT_D1;
+drop table EMP_MANAGER;
+INSERT ALL
+INTO EMP_DEPT_D1 VALUES(EMP_ID, EMP_NAME, DEPT_CODE, HIRE_DATE)
+INTO EMP_MANAGER VALUES(EMP_ID, EMP_NAME, MANAGER_ID)
+SELECT EMP_ID, EMP_NAME, DEPT_CODE, HIRE_DATE, MANAGER_ID
+FROM EMPLOYEE
+WHERE DEPT_CODE = 'D1';
+
+
+
+select * from EMP_DEPT_D1;
+
+select * from EMP_MANAGER;
+
+
+
+INSERT ALL
+WHEN HIRE_DATE < '2000/01/01' THEN
+INTO EMP_OLD VALUES(EMP_ID, EMP_NAME, HIRE_DATE, SALARY)
+WHEN HIRE_DATE >= '2000/01/01' THEN
+INTO EMP_NEW VALUES(EMP_ID, EMP_NAME, HIRE_DATE, SALARY)
+SELECT EMP_ID, EMP_NAME, HIRE_DATE, SALARY
+FROM EMPLOYEE;
+
