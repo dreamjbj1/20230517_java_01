@@ -25,3 +25,8 @@ grant connect, resource, dba to scott, kh;
 
 
 
+----select * from KH.DEPT;
+----create public synonym dept_public for KH.DEPT;
+--create public synonym DEPT2_PUBLIC for department;
+--select * from DEPT2_public;
+
