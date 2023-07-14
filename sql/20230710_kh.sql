@@ -590,3 +590,20 @@ INTO EMP_NEW VALUES(EMP_ID, EMP_NAME, HIRE_DATE, SALARY)
 SELECT EMP_ID, EMP_NAME, HIRE_DATE, SALARY
 FROM EMPLOYEE;
 
+
+-- 21. EMPLOYEE테이블에서 직원 명, 부서코드, 생년월일, 나이(만) 조회
+--(단, 생년월일은 주민번호에서 추출해서 00년 00월 00일로 출력되게 하며
+--나이는 주민번호에서 출력해서 날짜데이터로 변환한 다음 계산)
+--select emp_name, dept_code,
+--    substr(emp_no, 1,2)||"년'|| substr(emp_no, 3,2)||'월 ' || substr(emp_no,5,2)|| '일' "생년월일
+----  만나이
+--    , extract(
+--    from employee
+--;    
+
+create synonym emp for employee;
+select * from emp;
+
+
+
+

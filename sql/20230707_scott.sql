@@ -589,3 +589,29 @@ select * from dual
 
 -- 새로운 부서 50번이 만들어지고 그 부서에 신입사원 EJ3 (8005), EJ4(5006) 을 투입함.
 -- DDL 명령어 수행시 commit 행동도 함께 수행됨.
+
+create sequence seq_t1;
+select seq_t1.currval from dual;
+
+select seq_t1.nextval from dual;
+select seq_t1.currval from dual;
+
+select * from user_sequences;
+select * from user_index;
+select * from user_constraints;
+select * from user_cons_columns;
+
+-- 함수기반 index 
+create index idx_emp_sal on emp(sal);
+create index idx_emp_sal on emp(sal*12);
+-- where 절에 sal * 12 > 5000처럼 조건문에 사용이 빈번할때 index를 걸어줌 
+create index idx_emp_sal on emp(sal,comm);
+-- where 절에 sal > 5000 and comm > 200 처럼 조건문에 사용이 빈번할때 index 걸어줌
+select * from emp where sal > 3000 and comm is not null;
+-- bitmap 기반 index - 도메인의 종류가 적을때 동일한 데이터가 많을 경우 - gender 남여 
+create bitmap index idx_emp_deptno on emp(deptno);
+create bitmap index idx_emp_deptno_job on emp(job,deptno);
+-- 1. unique
+-- insert 오류체크빠름.
+-- 2. non-unique
+alter index pk_emp rebuild;
