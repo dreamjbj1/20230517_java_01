@@ -616,6 +616,7 @@ create bitmap index idx_emp_deptno_job on emp(job,deptno);
 -- 2. non-unique
 alter index pk_emp rebuild;
 
+<<<<<<< HEAD
 -- oracle문제 2번
 --select  distinct(job)
 --from emp;
@@ -635,3 +636,31 @@ where ename like '%S';
 select empno, ename, job, sal, deptno
 from emp
 where deptno= 30 and job = '';
+=======
+-- window - over (partition by...) : 기존 group by 단점 개선
+select deptno, empno, ename, sal
+    ,sum(sal) over(partition by deptno) sumsal
+    from emp;
+
+-- window - over (order by...) : 기존 rownum 대비 간결 
+select deptno, empno, ename, sal
+    ,rank() over(order by sal asc) ranksal
+    from emp;
+    
+-- rownum
+select deptno, empno, ename, sal
+    , rn ranksal
+    from(select rownum rn, t1.* from(select deptno, empno, ename, sal from emp order by sal asc) t1);
+-- 부서코드가 '30'인 직원의 이름, 급여, 급여에대한누적분산을 조회
+-- 부서별 직원의 이름, 급여, 급여에대한누적분산을 조회
+-- d. 1 : 누적분산 cume_dist(), 비율 ratio_to_report()
+select ename, sal
+            , trunc(CUME_DIST() over(partition by deptno order by sal),2) sal_cume_dist
+            , trunc(ratio_to_report(sal) over(partition by deptno), 2) sal_ratio
+from emp
+--where deptno=30
+ ;
+ 
+ select deptno, empno, sal, sum(sal) over(partition by deptno) s_sal
+from emp;
+>>>>>>> 916a15cfbbab7b96bf01f32c22190d30c8cf0050

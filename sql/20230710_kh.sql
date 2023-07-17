@@ -605,5 +605,36 @@ create synonym emp for employee;
 select * from emp;
 
 
+select dept_code, count(bonus)
+from employee
+where bonus is not null
+group by dept_code
+order by dept_code asc;
+
+
+-- 20230717
+-- group by -- 꼭 지켜져야하는 룰: group by 컬럼명, 컬럼명 만 select 로 선택할 수 있음. 또는 그룹함수 사용 가능
+select job_code, sum(salary)
+from employee
+group by rollup(job_code)
+order by 1;
+select job_code, sum(salary) from employee group by cube(job_code) order by 1;
+
+-- 집계(전체) 
+select dept_code, job_code, sum(salary) from employee
+group by rollup(dept_code, job_code)
+order by 1;
+
+select dept_code, job_code, sum(salary)
+from employee
+group by cube(dept_code,job_code)
+order by 1;
+
+select emp_id, emp_name, salary,
+rank() over(order by salary desc) 급여순위 
+from employee;
+
+select rank(2300000) within group (order by salary desc) as 순위
+from employee;
 
 
