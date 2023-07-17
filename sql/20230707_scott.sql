@@ -615,3 +615,23 @@ create bitmap index idx_emp_deptno_job on emp(job,deptno);
 -- insert 오류체크빠름.
 -- 2. non-unique
 alter index pk_emp rebuild;
+
+-- oracle문제 2번
+--select  distinct(job)
+--from emp;
+--
+---- oracle문제 3번
+--select empno "employee_no", ename "employee_name" ,mgr "manager",sal "salary", comm "commission", deptno "department_no"
+--from emp
+--order by deptno desc, ename;
+
+-- oracle pg 125 
+-- 문제 1번
+select *
+from emp
+where ename like '%S';
+
+-- 문제 2번
+select empno, ename, job, sal, deptno
+from emp
+where deptno= 30 and job = '';
