@@ -642,3 +642,84 @@ from emp
  
  select deptno, empno, sal, sum(sal) over(partition by deptno) s_sal
 from emp;
+
+select empno, ename, sal, ntile(4) over(order by sal) from emp;
+
+-- 3장 scott문제
+-- 1번 문제
+--select e.*,grade 
+--from emp e 
+--join salgrade on(grade)
+--;
+
+--select deptno
+--from emp
+--where deptno = 20 or deptno = 30;
+
+create table user_primarykey
+            user_no number primary key,
+            user_id varchar2(20) unique,
+            user_pwd varchar2(30) not null,
+            user_name varchar2(30),
+            gender varchar2(10),
+            phone varchar2(30),
+            email varchar2(50),
+);
+
+create table USER_PRIMARYKEY(
+            user_no number,
+            user_id varchar2(20) unique,
+            user_pwd varchar2(30) not null,
+            user_name varchar2(30),
+            gender varchar2(10),
+            phone varchar2(30),
+            email varchar2(50),
+            primary key(user_no)
+);
+insert into user_primarykey values(1, 'user01', 'pass01', '홍길동', '남', '010-1234-5678', 'hong123@kh.or.kr');
+--insert into user_primarykey values(1, 'user02', 'pass02', '이순신', '남', '010-5678-9012', 'lee123@kh.or.kr');
+select * from user_primarykey;
+
+CREATE TABLE USER_PRIMARYKEY2(
+USER_NO NUMBER, 
+USER_ID VARCHAR2(20), 
+USER_PWD VARCHAR2(30) NOT NULL,
+USER_NAME VARCHAR2(30), 
+GENDER VARCHAR2(10), 
+PHONE VARCHAR2(30), 
+EMAIL VARCHAR2(50), 
+PRIMARY KEY(USER_NO, USER_ID)
+);
+
+CREATE TABLE USER_PRIMARYKEY2(
+USER_NO NUMBER,
+USER_ID VARCHAR2(20),
+USER_PWD VARCHAR2(30) NOT NULL,
+USER_NAME VARCHAR2(30),
+GENDER VARCHAR2(10),
+PHONE VARCHAR2(30),
+EMAIL VARCHAR2(50),
+PRIMARY KEY (USER_NO, USER_ID)
+);
+
+INSERT INTO USER_PRIMARYKEY2 VALUES(1, 'user01', 'pass01', '홍길동', '남', '010-1234-5678', 'hong123@kh.or.kr');
+INSERT INTO USER_PRIMARYKEY2 VALUES(1, 'user02', 'pass02', '이순신', '남', '010-5678-9012', 'lee123@kh.or.kr');
+INSERT INTO USER_PRIMARYKEY2 VALUES(2, 'user01', 'pass01', '유관순', '여', '010-3131-3131', 'yoo123@kh.or.kr');
+INSERT INTO USER_PRIMARYKEY2 VALUES(1, 'user01', 'pass01', '신사임당', '여', '010-1111-1111', 'shin123@kh.or.kr');
+select * from user_primarykey2;
+
+create table user_grade(
+    grade_code number primary key,
+    grade_name varchar2(30) not null
+);
+
+CREATE TABLE USER_GRADE(
+GRADE_CODE NUMBER PRIMARY KEY,
+GRADE_NAME VARCHAR2(30) NOT NULL
+);
+
+insert into user_grade values(10, '일반회원');
+insert into user_grade values(20, '우수회원');
+insert into user_grade values(30, '특별회원');
+
+select * from user_grade;
