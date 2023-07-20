@@ -151,15 +151,57 @@ from tb_class
 join tb_department using(department_no);
 
 -- 8번 문제
---select class_name, professor_name
---from tb_class
---join tb_professor using(department_no)
---order by 1 desc;
+select class_name, professor_name
+from tb_class  
+join tb_professor using(department_no);
 
 -- 9번 문제
+select class_name, professor_name
+from tb_class  
+join tb_professor using(department_no);
+
 
 -- 10번 문제
 select student_no "학번", student_name "학생이름", round(point,1) "전체 평점"
 from tb_student
 join tb_grade using (department_no)
 where department_name = '음악학과';
+
+-- 15번 문제 group bynull
+--select  student_no "학번", student_name "이름", department_name "학과 이름"
+--from (select * from tb_student where absence_yn<>'Y') s
+--join tb department d using(department_no)
+--join tb grade g using (student_no);
+
+-- 18번 문제
+--select student_no, student_name
+--from tb_student
+--join tb_department using (department_no)
+--where department_name = '국어국문학과' and rownum = 1;
+
+select student_no, student_name
+    from (select student_no, s.student_name, avg(point) 
+                from tb_student s
+                join tb_department d using(department_no)
+                join tb_grade g using(student_no)
+                where department_name = '국어국문학과'
+                group by student_no, student_name
+                order by avg(point) desc)
+    where rownum = 1
+;
+--select * from
+--(
+--select rownum rn, tb1.* from
+--(
+--select * from employee order by hire_date asc
+--) tb1 
+--)
+--where rn <= 3
+--;
+
+select tb1.* from
+(
+select * from employee order by hire_date asc
+) tb1
+where rownum <=3
+;
