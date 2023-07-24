@@ -93,6 +93,13 @@ where coach_professor_no is null;
 --from tb_student;
 --where count(absence_yn = 'Y');
 
+-- 14번 문제
+select student_name "동일이름", count(student_name) "동명인 수"
+from tb_student
+group by student_name
+having count(student_name)>1
+order by 1;
+
 -- 실습 3장  -----------------------
 -- 1번 문제
 select student_name "학생 이름", student_address "주소지"
@@ -205,3 +212,31 @@ select * from employee order by hire_date asc
 ) tb1
 where rownum <=3
 ;
+
+-- 최근 3년
+select tb1. * from
+(
+select distinct substr(term_no, 1, 4) term
+from tb_grade
+order by term desc
+) tb1
+where rownum <= 3
+;
+
+-- 수강인원(class_no별)
+select count(*) cnt, class_no
+from tb_grade
+group by class_no
+order by cnt desc
+;
+
+-- 수강인원 top3 ==> n-Top (class_no별)
+select * from
+(
+select count(*) cnt, class_no from tb_grade group by class_no order by cnt desc
+)
+where rownum <= 3
+;
+
+select * from tb_student;
+desc tb_student;
