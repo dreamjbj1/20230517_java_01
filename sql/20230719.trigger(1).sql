@@ -72,3 +72,5 @@ select * from user_cons_columns  where constraint_name='SYS_C008486';
 desc PRO_DETAIL;
 
 select * from tb_department;
+
+insert into 
