@@ -10,8 +10,27 @@
 </head>
 <body>
 	<h3>부서리스트</h3>
+	<div>
+	<form action="<%=request.getContextPath() %>/department/list" method="get">
+	<input type="search" name="searchWord">
+	<input type="submit" value="찾기">
+	</form>
+	</div>
 	<%
 	List<DepartmentVo> volist= (List<DepartmentVo>)request.getAttribute("departmentList");	
+	String searchWord =(String)request.getAttribute("searchWord");
+	if(searchWord !=null) {
+	%>
+	<h3><%=searchWord %> 검색결과</h3>
+	<h3><a href="<%=request.getContextPath() %>/department/list">전체보기</a></h3>
+	<% 
+	}
+	
+	if(volist.size() == 0) {
+		%>
+		<h2>결과물이 없습니다</h2>
+		<% 
+	}else {
 	%>
 	
 	<table border="1">
@@ -37,9 +56,12 @@
 		</tr>
 		
 		<%
-		}
+		}  //for
 		%>
 		
 	</table>
+	<%
+	} //else
+	%>
 </body>
 </html>

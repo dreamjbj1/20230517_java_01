@@ -32,9 +32,19 @@ public class DepartmentListController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("/department/list doGet() 진입");
-//		TODO DB
+//		1. 전달받은 parameter 읽어내기
+		String searchWord = request.getParameter("searchWord");
+		//		TODO DB
 		DepartmentDao dao = new DepartmentDao();
-		List<DepartmentVo> result = dao.selectListDepartment();
+		List<DepartmentVo> result = null;
+		if(searchWord != null) {
+			result = dao.selectListDepartment(searchWord);
+		} else {
+			result = dao.selectListDepartment();
+		}
+		if(searchWord !=null) {
+			request.setAttribute("searchWord", searchWord );
+		}
 		request.setAttribute("departmentList", result);
 		request.getRequestDispatcher("/WEB-INF/view/department/list2.jsp").forward(request, response);
 	}
