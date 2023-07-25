@@ -52,7 +52,8 @@
 		
 		<tr>
 			<td><a href="<%=request.getContextPath() %>/student/get?sno=<%=vo.getStudentNo() %>"><%=vo.getStudentNo() %></a></td>
-			<td><%=vo.getStudentName() %></td>
+			<td><a href="<%=request.getContextPath()%>/student/get?sno=<%=vo.getStudentNo() %>"><%=vo.getStudentName() %></a></td>
+			<%-- <td><a href="<%=request.getContextPath() %>/student/get?sno=<%=vo.getStudentNo() %>"><%=vo.getStudentName() %></a></td> --%>
 			<td><%=vo.getDepartmentNo() %></td>
 			<td><%=vo.getStudentSsn() %></td>
 			<td><%=vo.getStudentAddress() %></td>

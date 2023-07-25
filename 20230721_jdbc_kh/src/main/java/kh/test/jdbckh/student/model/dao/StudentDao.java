@@ -88,7 +88,7 @@ public class StudentDao {
 //			1. driver 있다면 로딩함. // 없다면 ClassNotFoundException 발생	
 //			2. connection 객체 생성 // dbms와 연결
 			conn = getConnection();
-			conn = DriverManager.getConnection("jdbc:oracle:thin:@127.0.0.1:1521:xe", "KH", "kh"); 
+//			conn = DriverManager.getConnection("jdbc:oracle:thin:@127.0.0.1:1521:xe", "KH", "kh"); 
 //			if(conn != null) {
 //				System.out.println("DB연결 성공!!!!!!!");
 //			} else {

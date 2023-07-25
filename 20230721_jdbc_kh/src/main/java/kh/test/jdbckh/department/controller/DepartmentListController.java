@@ -34,13 +34,21 @@ public class DepartmentListController extends HttpServlet {
 		System.out.println("/department/list doGet() 진입");
 //		1. 전달받은 parameter 읽어내기
 		String searchWord = request.getParameter("searchWord");
+		String pageNoStr = request.getParameter("pageNo");
+		int currentPage = 1;
+		if(pageNoStr != null) {
+			currentPage = Integer.parseInt(pageNoStr);
+		}
 		//		TODO DB
 		DepartmentDao dao = new DepartmentDao();
 		List<DepartmentVo> result = null;
 		if(searchWord != null) {
 			result = dao.selectListDepartment(searchWord);
 		} else {
-			result = dao.selectListDepartment();
+//			전체
+//			result = dao.selectListDepartment();
+//			페이징
+			result = dao.selectListDepartment(currentPage, 10);
 		}
 		if(searchWord !=null) {
 			request.setAttribute("searchWord", searchWord );

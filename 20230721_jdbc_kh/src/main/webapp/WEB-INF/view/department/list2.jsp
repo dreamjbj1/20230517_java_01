@@ -60,8 +60,18 @@
 		%>
 		
 	</table>
+	<div>
 	<%
-	} //else
+	for(int i=1;i<=10;i++){
+	%>
+		<a href="<%=request.getContextPath()%>/department/list?pageNo=<%=i%>"><span><%=i%></span></a>
+		,
+	<%
+	}  // for
+	%>
+	</div>
+	<%
+	}  //else
 	%>
 </body>
 </html>
