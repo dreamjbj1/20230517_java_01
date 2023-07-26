@@ -17,10 +17,40 @@ public class StudentVo {
 	private String studentName;
 	private String studentSsn;
 	private String studentAddress;
-	private Date entranceDate;
+//	view에서 입력받은 데이터가 있는 경우 String 
+	private String entranceDate;
+	// private Date entranceDate;
 	private String absenceYn;
 	private String coachProfessorNo;
 	private String departmentName;
+	public StudentVo() {
+	}
+
+	public StudentVo(String studentNo, String departmentNo, String studentName, String studentSsn,
+			String studentAddress, String entranceDate, String absenceYn, String coachProfessorNo) {
+		this.studentNo = studentNo;
+		this.departmentNo = departmentNo;
+		this.studentName = studentName;
+		this.studentSsn = studentSsn;
+		this.studentAddress = studentAddress;
+		this.entranceDate = entranceDate;
+		this.absenceYn = absenceYn;
+		this.coachProfessorNo = coachProfessorNo;
+	}
+
+	public StudentVo(String studentNo, String departmentNo, String studentName, String studentSsn,
+			String studentAddress, String entranceDate, String absenceYn, String coachProfessorNo,
+			String departmentName) {
+		this.studentNo = studentNo;
+		this.departmentNo = departmentNo;
+		this.studentName = studentName;
+		this.studentSsn = studentSsn;
+		this.studentAddress = studentAddress;
+		this.entranceDate = entranceDate;
+		this.absenceYn = absenceYn;
+		this.coachProfessorNo = coachProfessorNo;
+		this.departmentName = departmentName;
+	}
 	
 //	public void selectListStudent() {
 //		
@@ -57,10 +87,10 @@ public class StudentVo {
 	public void setStudentAddress(String studentAddress) {
 		this.studentAddress = studentAddress;
 	}
-	public Date getEntranceDate() {
+	public String getEntranceDate() {
 		return entranceDate;
 	}
-	public void setEntranceDate(Date entranceDate) {
+	public void setEntranceDate(String entranceDate) {
 		this.entranceDate = entranceDate;
 	}
 	public String getAbsenceYn() {

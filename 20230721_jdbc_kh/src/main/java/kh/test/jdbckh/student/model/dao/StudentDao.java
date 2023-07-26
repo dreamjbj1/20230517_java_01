@@ -17,19 +17,45 @@ import static kh.test.jdbckh.common.jdbc.JdbcTemplate.*;
 public class StudentDao {
 // ppt 내용구현
 	
+	public int insertStudent(Connection conn, StudentVo vo) {
+		int result = 0;
+		String query = "insert into tb_student "
+				+ " (STUDENT_NO, DEPARTMENT_NO,STUDENT_NAME,STUDENT_SSN,STUDENT_ADDRESS,ENTRANCE_DATE,ABSENCE_YN,COACH_PROFESSOR_NO)" 
+				+ " values (?,?,?,?,?,  to_date(?, 'yyyy-mm-dd'),?,?)";
+		PreparedStatement pstmt = null;
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, vo.getStudentNo());
+			pstmt.setString(2, vo.getDepartmentNo());
+			pstmt.setString(3, vo.getStudentName());
+			pstmt.setString(4, vo.getStudentSsn());
+			pstmt.setString(5, vo.getStudentAddress());
+			pstmt.setString(6, vo.getEntranceDate());
+			pstmt.setString(7, vo.getAbsenceYn());
+			pstmt.setString(8, vo.getCoachProfessorNo());
+			result = pstmt.executeUpdate();
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		System.out.println("[student insert dao result]"+result);
+		return result;
+	}
+	
 //	 DB에서 tb_student 테이블의 전닯다은 학번을 통해 학생 1명의 상세정보를 읽어옴
-	 public StudentVo selectOneStudent(String studentNo) {
+	 public StudentVo selectOneStudent(Connection conn,String studentNo) {
 		 System.out.println("DAO selectOneStudent() arg:"+ studentNo);
 		 
 		 StudentVo result = null;
 //		 String query = "select * from tb_student join tb_Department using (department_no) where student_no = "+"'"+studentNo+"'";
 		 String query = "select * from tb_student join tb_Department using (department_no) where student_no = ?";
-		 Connection conn = null;
+//		 Connection conn = null;
 		 PreparedStatement pstmt = null;
 		 ResultSet rset = null;
 		 
 		 try {
-			 conn = getConnection();
+//			 conn = getConnection();
 //			 Class.forName("oracle.jdbc.driver.OracleDriver");
 //			 conn = DriverManager.getConnection("jdbc:oracle:thin:@127.0.0.1:1521:xe","kh","kh");
 //			 if(conn==null) {
@@ -41,7 +67,7 @@ public class StudentDao {
 //			 pstmt 생성된 후 ---- execute실행하기 전 
 //			 여기서 ?위치홀더에 값 넣기
 			 pstmt.setString(1, studentNo);
-			 rset = pstmt.executeQuery();
+			  rset = pstmt.executeQuery();
 	
 			 if(rset.next()) {
 				 result = new StudentVo();
@@ -49,7 +75,8 @@ public class StudentDao {
 				 result.setAbsenceYn(rset.getString("Absence_Yn"));
 				 result.setCoachProfessorNo(rset.getString("Coach_Professor_NO"));
 				 result.setDepartmentNo(rset.getString("Department_No"));
-				 result.setEntranceDate(rset.getDate("Entrance_Date"));
+//				 result.setEntranceDate(rset.getDate("Entrance_Date"));
+				 result.setEntranceDate(rset.getString("Entrance_Date"));
 				 result.setStudentAddress(rset.getString("Student_Address"));
 				 result.setStudentName(rset.getString("Student_Name"));
 				 result.setStudentNo(rset.getString("Student_No"));
@@ -61,33 +88,31 @@ public class StudentDao {
 		 }catch (Exception e) {
 			e.printStackTrace();
 		 }finally {
-			try {
-				if(rset !=null) rset.close();
-				if(pstmt != null)pstmt.close();
-				if(conn != null)conn.close();
-			} catch (Exception e2) {
-				e2.printStackTrace();
-			}
+			 close(rset);
+			 close(pstmt);
 		 }
+			 
+	
+		 
 		 System.out.println(result);
 		 return result;
 	 }
 	
 //	DB에서 tb_student 테이블의 있는 모든 내용을 읽어서 꺼냄
-	public List<StudentVo> selectListStudent() { // 전체 보기
+	public List<StudentVo> selectListStudent(Connection conn) { // 전체 보기
 		
 		List<StudentVo> result = null;
 		
 		String query = "select * from tb_student";
 		
-		Connection conn = null;
+//		Connection conn = null;
 		Statement stmt = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs= null;
 		try {
 //			1. driver 있다면 로딩함. // 없다면 ClassNotFoundException 발생	
 //			2. connection 객체 생성 // dbms와 연결
-			conn = getConnection();
+//			conn = getConnection();
 //			conn = DriverManager.getConnection("jdbc:oracle:thin:@127.0.0.1:1521:xe", "KH", "kh"); 
 //			if(conn != null) {
 //				System.out.println("DB연결 성공!!!!!!!");
@@ -115,7 +140,7 @@ public class StudentDao {
 				 vo.setDepartmentNo(rs.getString("department_No"));
 				 vo.setStudentSsn(rs.getString("student_Ssn"));
 				 vo.setStudentAddress(rs.getString("student_Address"));
-				 vo.setEntranceDate(rs.getDate("Entrance_Date"));
+				 vo.setEntranceDate(rs.getString("Entrance_Date"));
 				 vo.setAbsenceYn(rs.getString("absence_Yn"));
 				 vo.setCoachProfessorNo(rs.getString("coach_Professor_No"));
 				 
@@ -132,7 +157,6 @@ public class StudentDao {
 		} finally {
 			close(rs);
 			close(pstmt);
-			close(conn);
 		}
 
 		
@@ -153,7 +177,7 @@ public class StudentDao {
 	}
 
 	// DB에서 tb_student 테이블의 있는 모든 내용을 읽어서 꺼냄.
-		public List<StudentVo> selectListStudent(String searchWord) {
+		public List<StudentVo> selectListStudent(Connection conn, String searchWord) {
 			List<StudentVo> result = null;
 			// 오류String query= "select * from tb_student where student_name like '%?%' or student_address like '%?%'";
 			String query= "select * from tb_student where student_name like ? or student_address like ?";
@@ -161,14 +185,14 @@ public class StudentDao {
 //			String query= "select * from tb_student where student_name like '%"+searchWord+"%' or student_address like '%"+searchWord+"%'";
 			
 			
-			Connection conn = null;
+//			Connection conn = null;
 			Statement stmt = null;
 			PreparedStatement pstmt = null;
 			ResultSet rs = null;
 			try {
 				// 1. driver 있다면 로딩함. // 없다면 ClassNotFoundException 오류 발생
 				// 2. Connection 객체 생성 // dbms와 연결
-				conn = getConnection();
+//				conn = getConnection();
 //				if(conn != null) {
 //					System.out.println("DB연결 성공!!!!!!!!!");
 //				} else {
@@ -198,7 +222,7 @@ public class StudentDao {
 					vo.setAbsenceYn( rs.getString("Absence_Yn"));
 					vo.setCoachProfessorNo( rs.getString("Coach_Professor_No"));
 					vo.setStudentAddress( rs.getString("Student_Address"));
-					vo.setEntranceDate( rs.getDate("Entrance_Date"));
+					vo.setEntranceDate( rs.getString("Entrance_Date"));
 					vo.setStudentSsn(rs.getString("Student_Ssn"));
 					
 					result.add(vo);
@@ -214,7 +238,7 @@ public class StudentDao {
 					// 생성 반대 순서로 close()
 					close(rs);
 					close(pstmt);
-					close(conn);					
+//					close(conn);					
 					}
 			
 		
@@ -222,10 +246,33 @@ public class StudentDao {
 			//  확인용 System.out.println(result);
 			return result;
 		}
-		public List<StudentVo> selectListStudent(int currentPage, int pageSize ) {  // 페이징처리
-			List<StudentVo> result = new ArrayList<StudentVo>();
-			
+		
+		public int getTotalCount(Connection conn) {
+			int result = 0;// 총글개수
 			String queryTotalCnt= "select count(*) cnt from tb_student";  
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			try {
+				conn = getConnection();
+				pstmt = conn.prepareStatement(queryTotalCnt);
+				rs = pstmt.executeQuery();
+				if(rs.next()) {
+					//오류 함수는 컬럼명이 될수 없음 -  totalCnt = rs.getInt("count(*)");
+					result = rs.getInt("cnt");
+					//totalCnt = rs.getInt(1);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				close(rs);
+				close(pstmt);
+			}
+			System.out.println("총글개수:"+result);
+			return result;
+		}
+		
+		public List<StudentVo> selectListStudent(Connection conn, int currentPage, int pageSize, int totalCnt) {  // 페이징처리
+			List<StudentVo> result = new ArrayList<StudentVo>();
 			String query= " select * from "
 					+ " (\r\n"
 					+ " select tb1.*, rownum rn from"
@@ -233,33 +280,18 @@ public class StudentDao {
 					+ " ) tb2"
 					+ " where rn between ? and ?";
 			
-			Connection conn = null;
 			PreparedStatement pstmt = null;
 			ResultSet rs = null;
 			
-			int totalCnt = 0;  // 총글개수
 			int startRownum = 0;
 			int endRownum = 0;
+			System.out.println("총글개수:"+totalCnt);
+			startRownum = (currentPage-1)*pageSize +1;
+			endRownum = ((currentPage*pageSize) > totalCnt) ? totalCnt: (currentPage*pageSize);
+			System.out.println("startRownum:"+startRownum);
+			System.out.println("endRownum:"+endRownum);
+			
 			try {
-				conn = getConnection();
-				// 총글개수 알아오기 위한 query 실행
-				pstmt = conn.prepareStatement(queryTotalCnt);
-				rs = pstmt.executeQuery();
-				if(rs.next()) {
-					//오류 함수는 컬럼명이 될수 없음 -  totalCnt = rs.getInt("count(*)");
-					totalCnt = rs.getInt("cnt");
-					//totalCnt = rs.getInt(1);
-				}
-				System.out.println("총글개수:"+totalCnt);
-				startRownum = (currentPage-1)*pageSize +1;
-				endRownum = ((currentPage*pageSize) > totalCnt) ? totalCnt: (currentPage*pageSize);
-				System.out.println("startRownum:"+startRownum);
-				System.out.println("endRownum:"+endRownum);
-
-				// conn 생성으로 2개의 query(select)문을 실행할때
-				close(rs);
-				close(pstmt);
-				
 				// 페이지당 글 읽어오기 위한 query 실행
 				pstmt = conn.prepareStatement(query);
 				pstmt.setInt(1, startRownum);
@@ -277,7 +309,7 @@ public class StudentDao {
 					vo.setAbsenceYn( rs.getString("Absence_Yn"));
 					vo.setCoachProfessorNo( rs.getString("Coach_Professor_No"));
 					vo.setStudentAddress( rs.getString("Student_Address"));
-					vo.setEntranceDate( rs.getDate("Entrance_Date") );
+					vo.setEntranceDate( rs.getString("Entrance_Date") );
 					vo.setStudentSsn(rs.getString("Student_Ssn"));
 					
 					result.add(vo);
@@ -287,10 +319,101 @@ public class StudentDao {
 			} finally {
 				close(rs);
 				close(pstmt);
-				close(conn);
 			}
 
 			//  확인용 System.out.println(result);
 			return result;
 		}
+		
+		public int getSearchTotalCount(Connection conn, String searchWord) {// 검색용 total Count
+			int result = 0;// 총글개수
+			String queryTotalCnt= "select count(*) cnt from tb_student"
+					+ " where student_name like ? or student_address like ?";  
+			searchWord = "%"+searchWord+"%";
+
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			
+			try {
+				conn = getConnection();
+				pstmt = conn.prepareStatement(queryTotalCnt);
+				pstmt.setString(1, searchWord);
+				pstmt.setString(2, searchWord);
+				rs = pstmt.executeQuery();
+				if(rs.next()) {
+					//오류 함수는 컬럼명이 될수 없음 -  totalCnt = rs.getInt("count(*)");
+					result = rs.getInt("cnt");
+					//totalCnt = rs.getInt(1);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				close(rs);
+				close(pstmt);
+			}
+			System.out.println("검색총글개수:"+result);
+			return result;
+		}
+		
+		public List<StudentVo> selectListStudent(Connection conn, int currentPage, int pageSize, int totalCnt , String searchWord) {  // 페이징처리+검색
+			List<StudentVo> result = new ArrayList<StudentVo>();
+			String query= " select * from "
+					+ " (\r\n"
+					+ " select tb1.*, rownum rn from"
+					+ "    (select * from tb_student"
+					+ " 			where student_name like ? or student_address like ?"
+					+ " 			order by student_no asc) tb1"
+					+ " ) tb2"
+					+ " where rn between ? and ?";
+			
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			
+			int startRownum = 0;
+			int endRownum = 0;
+			System.out.println("총글개수:"+totalCnt);
+			startRownum = (currentPage-1)*pageSize +1;
+			endRownum = ((currentPage*pageSize) > totalCnt) ? totalCnt: (currentPage*pageSize);
+			System.out.println("startRownum:"+startRownum);
+			System.out.println("endRownum:"+endRownum);
+			
+			searchWord = "%"+searchWord+"%";
+			
+			try {
+				// 페이지당 글 읽어오기 위한 query 실행
+				pstmt = conn.prepareStatement(query);
+				pstmt.setString(1, searchWord);
+				pstmt.setString(2, searchWord);
+				pstmt.setInt(3, startRownum);
+				pstmt.setInt(4, endRownum);
+				rs = pstmt.executeQuery();
+				
+				// 5. ResultSet 에서 row(record)=한줄 읽어오기 위해 cursor(포인트)를 이동함.
+				while(rs.next() == true) {
+					//  한줄row/record 를 읽을 준비 완료
+					// 확인용도. System.out.println( rs.getString("STUDENT_NAME") );
+					StudentVo vo = new StudentVo();
+					vo.setStudentNo(rs.getString("Student_No"));
+					vo.setDepartmentNo( rs.getString("department_no"));
+					vo.setStudentName( rs.getString("Student_Name"));
+					vo.setAbsenceYn( rs.getString("Absence_Yn"));
+					vo.setCoachProfessorNo( rs.getString("Coach_Professor_No"));
+					vo.setStudentAddress( rs.getString("Student_Address"));
+					vo.setEntranceDate( rs.getString("Entrance_Date") );
+					vo.setStudentSsn(rs.getString("Student_Ssn"));
+					
+					result.add(vo);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				close(rs);
+				close(pstmt);
+			}
+
+			//  확인용 System.out.println(result);
+			return result;
+		}
+		
+		
 	}

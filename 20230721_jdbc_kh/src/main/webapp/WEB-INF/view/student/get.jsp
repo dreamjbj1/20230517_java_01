@@ -12,7 +12,7 @@
  	<h1>학생 상세 정보</h1>
  	
 	<%
-	StudentVo vo = (StudentVo)request.getAttribute("studentList");
+	StudentVo vo = (StudentVo)request.getAttribute("student");
 
 	%>
 	
