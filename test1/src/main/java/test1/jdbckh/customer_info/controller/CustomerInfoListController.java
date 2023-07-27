@@ -31,12 +31,13 @@ public class CustomerInfoListController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("/customer/list doGet() 진입");
 		CustomerInfoDao dao = new CustomerInfoDao();
 		List<CustomerInfoVo> result = dao.selectListCustomerInfo();
 		request.setAttribute("CustomerInfoList", result);
 //		request.setAttribute("aaa", "그냥속성값테스트해봄");
 //		request.setAttribute("bbb", "그냥속성값테스트해봄2");
-//		request.setAttribute("ccc", 333);
+		request.setAttribute("ccc", 333);
 		request.getRequestDispatcher("/WEB-INF/view/customer/list.jsp").forward(request, response);
 	}
 

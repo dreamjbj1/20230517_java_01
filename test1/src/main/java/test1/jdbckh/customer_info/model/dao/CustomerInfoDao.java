@@ -12,12 +12,17 @@ import java.util.List;
 import test1.jdbckh.customer_info.model.vo.CustomerInfoVo;
 
 public class CustomerInfoDao {
+	
+	
 	public List<CustomerInfoVo> selectListCustomerInfo() {
+		
 			List<CustomerInfoVo> result = null;
+//			String query = "select * from CUSTOMER_INFO";
 			Connection conn = null;
 			Statement stmt = null;
 			PreparedStatement pstmt = null;
-		
+			
+			
 			try{
 				Class.forName("oracle.jdbc.driver.OracleDriver");
 				conn = DriverManager.getConnection("jdbc:oracle:thin:@127.0.0.1:1521:xe", "jbj", "jbj");
