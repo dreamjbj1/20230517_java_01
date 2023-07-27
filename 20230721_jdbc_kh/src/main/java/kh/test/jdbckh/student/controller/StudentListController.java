@@ -74,6 +74,7 @@ public class StudentListController extends HttpServlet {
 				} else {
 					startPageNum = ((currentPage/pageBlockSize))*pageBlockSize +1;
 				}
+				
 				int endPageNum = (startPageNum+pageBlockSize > totalPageNum) ? totalPageNum : startPageNum+pageBlockSize-1;
 				request.setAttribute("totalPageNum", totalPageNum);
 				request.setAttribute("startPageNum", startPageNum);

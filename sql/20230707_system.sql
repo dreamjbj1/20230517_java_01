@@ -10,6 +10,14 @@ alter session set "_ORACLE_SCRIPT"=true;
 create user kh identified by kh;
 create user scott identified by tiger;
 
+--
+create user jbj identified by jbj;
+grant connect, resource to kh;
+
+create user khl identified by khl;
+grant connect, resource to khl;
+
+create user test identified by test; 
 
 --DCL
 -- create session, create table 처럼 각각의 권한명을 모두 나열하여 적기 어려움..
@@ -21,7 +29,7 @@ grant connect, resource to kh;
 revoke connect, resource from kh; 
 grant connect, resource to scott, kh;
 -- 21g xe 버젼, dba 추가 
-grant connect, resource, dba to scott, kh;
+grant connect, resource, dba to scott, kh, jbj;
 
 
 

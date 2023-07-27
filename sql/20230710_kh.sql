@@ -640,3 +640,8 @@ from employee;
 create table user_foreignkey(user_no number primary key, user_id varchar2(20) unique, user_pwd varchar2(30) not null,
 user_name varchar2(30), gender varchar(10), phone varchar2(30), email varchar2(50), grade_code number, 
 foreign key (grade_code) references user_grade(grade_code));
+
+
+
+
+
