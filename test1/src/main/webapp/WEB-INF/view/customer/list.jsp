@@ -11,7 +11,7 @@
 <body>
 	<h2>회원 정보</h2>
 	<%
-	int c = (int)request.getAttribute("ccc");
+	/* int c = (int)request.getAttribute("ccc"); */
 	List<CustomerInfoVo> volist = (List<CustomerInfoVo>)request.getAttribute("CustomerInfoList");
 	%>
 	

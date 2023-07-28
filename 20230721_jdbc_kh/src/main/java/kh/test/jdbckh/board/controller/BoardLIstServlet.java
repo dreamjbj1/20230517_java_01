@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import kh.test.jdbckh.board.model.dao.BoardService;
 import kh.test.jdbckh.board.model.dto.BoardDto;
+import kh.test.jdbckh.board.model.service.BoardService;
 
 /**
  * Servlet implementation class BoardListServlet

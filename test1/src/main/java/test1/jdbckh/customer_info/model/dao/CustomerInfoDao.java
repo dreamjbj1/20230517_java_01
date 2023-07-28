@@ -43,6 +43,7 @@ public class CustomerInfoDao {
 					vo.setPhone(rs.getString("phone"));
 					vo.setAddress(rs.getString("Address"));
 					vo.setJoinDate(rs.getDate("JoinDate"));
+					vo.setGrade(rs.getString("Grade"));
 					vo.setCity(rs.getString("City"));
 					
 					result.add(vo);
