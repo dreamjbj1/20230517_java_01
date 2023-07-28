@@ -68,7 +68,7 @@ public class BoardService {
 		return result;
 	}
 	
-	//// 추가 
+	//// 추가 wqq
 	// 페이징 처리 + 검색
 	public int getTotalCount(String searchWord) {
 		int result = 0;
