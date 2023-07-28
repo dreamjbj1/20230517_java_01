@@ -37,7 +37,7 @@ public class CustomerInfoListController extends HttpServlet {
 		request.setAttribute("CustomerInfoList", result);
 //		request.setAttribute("aaa", "그냥속성값테스트해봄");
 //		request.setAttribute("bbb", "그냥속성값테스트해봄2");
-		request.setAttribute("ccc", 333);
+		 request.setAttribute("ccc", 333); 
 		request.getRequestDispatcher("/WEB-INF/view/customer/list.jsp").forward(request, response);
 	}
 

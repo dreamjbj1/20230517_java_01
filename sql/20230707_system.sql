@@ -15,7 +15,7 @@ create user jbj identified by jbj;
 grant connect, resource to kh;
 
 create user khl identified by khl;
-grant connect, resource to khl;
+grant connect, resource, dba to khl;
 
 create user test identified by test; 
 

@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import kh.test.jdbckh.board.model.dao.BoardService;
+import kh.test.jdbckh.board.model.dao.BoardService1;
 import kh.test.jdbckh.board.model.dto.BoardDto;
 
 /**
@@ -32,7 +32,7 @@ public class BoardLIstServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 1. request.getParameter()
 		// 2. service.selectList();
-		List<BoardDto> result = new BoardService().selectList();
+		List<BoardDto> result = new BoardService1().selectList();
 		// 3. 
 		request.setAttribute("boardList", result);
 		// 4.
