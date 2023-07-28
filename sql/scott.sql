@@ -66,3 +66,6 @@ COMMIT;
 
 SET TERMOUT ON
 SET ECHO ON
+
+
+desc emp;
