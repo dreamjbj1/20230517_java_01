@@ -33,7 +33,7 @@
 		%>
 		
 		<tr>
-			<td><%=vo.getCustoNo() %></td>
+			<td><a href="<%=request.getContextPath() %>/customer/get?sno=<%= vo.getCustoNo() %>"><%=vo.getCustoNo() %></a></td>
 			<td><%=vo.getCustName() %></td>
 			<td><%=vo.getPhone() %></td>
 			<td><%=vo.getAddress() %></td>
