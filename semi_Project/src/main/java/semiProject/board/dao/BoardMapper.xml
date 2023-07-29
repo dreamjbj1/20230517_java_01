@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="Board">
+	
+	<select id = "MainList" parameterType="semiProject.board.dto.BoardPageDTO" resultType= "semiProject.board.dto.BoardDTO">
+		
+		
+		SELECT b.* FROM 
+   		 (SELECT 
+   		     rownum rm 
+   		 	,a.* 
+   		 FROM 
+         (SELECT
+		     board_id
+		   , user_id
+		   , title
+		   , content
+		   , readCount
+		   , registerDate
+		   , modifyDate
+		 FROM
+		  	PRO_BOARD
+		 <if test="searchWord != null">
+			 WHERE title LIKE '%' || #{searchWord} || '%' 
+	    </if>
+	    ORDER BY board_id DESC
+	    ) a
+  		
+		     ORDER BY rm ASC)b
+            WHERE b.rm BETWEEN #{startRow} AND #{endRow}
+           
+		
+	</select>
+	
+	<select id="MainListTotalCount" parameterType="String" resultType="int">
+	
+		SELECT count(*) FROM PRO_BOARD 
+		 <if test="searchWord != null">
+			WHERE title LIKE '%' || #{searchWord} || '%'
+		</if>
+	</select>
+	
+	<select id="GetByOneList" parameterType="int" resultType="semiProject.board.dto.BoardDTO">
+	
+		SELECT board_id, user_id, title, content  FROM PRO_BOARD WHERE board_id = #{board_id}
+	
+	</select>
+	
+	
+	<insert id="MainListWrite" parameterType="semiProject.board.dto.BoardDTO" >
+		
+		INSERT INTO
+		 PRO_BOARD
+		 (
+		    board_id
+		  , user_id
+		  , title
+		  , content
+		 )
+		VALUES
+		(
+		    board_id_seq.nextval
+		  , #{user_id}
+		  , #{title}
+		  , #{content}
+		)
+	</insert>
+	
+	<update id="MainListUpdate" parameterType="semiProject.board.dto.BoardDTO">
+		
+		UPDATE
+			 PRO_BOARD
+		SET 
+		     title = #{title} 
+		   , content = #{content}
+		   , modifyDate = SYSDATE	
+		WHERE
+		     board_id = #{board_id}
+		
+	</update>
+	
+	<delete id="MainListDelete" parameterType="int">
+	
+		DELETE FROM PRO_BOARD
+		WHERE board_id = #{board_id}
+		
+	</delete>
+	
+</mapper>

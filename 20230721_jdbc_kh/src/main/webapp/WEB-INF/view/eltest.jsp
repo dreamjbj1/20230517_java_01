@@ -36,6 +36,7 @@ c:if는 true false 조건만 가능함 - else없음.
 	${i},
 </c:forEach>
 <br>
+[[ ${volist } ]]
 
 <c:forEach items="${volist }" var="vo"> 
 ${vo}<hr>
