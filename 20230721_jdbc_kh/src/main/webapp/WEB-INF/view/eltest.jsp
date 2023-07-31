@@ -9,8 +9,14 @@
 <head>
 <meta charset="UTF-8">
 <title>EL</title>
+<link href="<%=request.getContextPath() %>/resources/css/reset.css" rel="stylesheet">
+<script src="<%=request.getContextPath() %>/resources/js/jquery-3.7.0.js"></script>
 </head>
 <body>
+<!-- <img alt="contextPath " src="/resources/images/top_logo.jpg"><br> -->
+<img alt="jpg테스트" src="<%=request.getContextPath() %>/resources/images/top_logo.jpg"><br>
+<img alt="png테스트" src="<%=request.getContextPath() %>/resources/images/17419544428574.png"><br>
+<img alt="svg테스트" src="<%=request.getContextPath() %>/resources/images/a.svg"><br>
 
 <h2>EL-ExpressionLanguage <br> -단점: java for/if/변수 사용 불가<br> 보완: jstl의 foreach/if/set변수 사용 </h2>
 c:if는 true false 조건만 가능함 - else없음.
