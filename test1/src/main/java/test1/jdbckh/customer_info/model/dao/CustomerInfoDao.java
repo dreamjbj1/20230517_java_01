@@ -13,7 +13,7 @@ import test1.jdbckh.customer_info.model.vo.CustomerInfoVo;
 
 public class CustomerInfoDao {
 	
-	
+	                            
 	public List<CustomerInfoVo> selectListCustomerInfo() {
 		
 			List<CustomerInfoVo> result = null;
@@ -76,4 +76,8 @@ public class CustomerInfoDao {
 			
 			return result;
 		} // FUNCTION
+	
+	
+	
+	
 }// CLASS

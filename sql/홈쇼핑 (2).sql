@@ -90,3 +90,4 @@ SELECT * FROM SALES_INFO;
 
 desc CUSTOMER_INFO;
 
+commit;

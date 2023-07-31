@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-    <wb-module deploy-name="Pro_Project">
+        
+    <wb-module deploy-name="Pro_Project(오게)">
+                
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
+                
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
-        <property name="context-root" value="Pro_Project"/>
-        <property name="java-output-path" value="/Pro_Project/build/classes"/>
+                
+        <property name="java-output-path" value="/Pro_Project(오게)/build/classes"/>
+        <property name="context-root" value="Pro_Project(오게)"/>
+            
     </wb-module>
+    
 </project-modules>

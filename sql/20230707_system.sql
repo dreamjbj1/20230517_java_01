@@ -10,9 +10,9 @@ alter session set "_ORACLE_SCRIPT"=true;
 create user kh identified by kh;
 create user scott identified by tiger;
 
---
+
 create user jbj identified by jbj;
-grant connect, resource to kh;
+grant connect, resource, dba to jbj;
 
 create user khl identified by khl;
 grant connect, resource, dba to khl;
