@@ -12,10 +12,8 @@ import java.util.List;
 import test1.jdbckh.customer_info.model.vo.CustomerInfoVo;
 
 public class CustomerInfoDao {
-<<<<<<< HEAD
-	
+
 	                            
-=======
 	public CustomerInfoVo selectOneCustomerInfo(int custNo) {
 		System.out.println("DAO selectOneCustomerInfo() arg:" + custNo);
 		
@@ -55,7 +53,6 @@ public class CustomerInfoDao {
 		 return result;
 	 }
 	
->>>>>>> aaae88ed2b02e257f0df7f5bf36b5265cb325a9a
 	public List<CustomerInfoVo> selectListCustomerInfo() {
 		
 			List<CustomerInfoVo> result = null;

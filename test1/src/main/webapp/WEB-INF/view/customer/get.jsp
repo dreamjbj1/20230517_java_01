@@ -1,4 +1,4 @@
-<%@page import="test1.jdbckh.customer_info.model.vo.CustomerInfoVo"%>
+<%@page import="test1.jdbckh.customer_info.model.vo.Cust"
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -22,6 +22,8 @@
 		<td>주소</td>
 		<td>가입일자</td>
 		</tr>
+		
+		
 		
 		<tr>
 		<td><%=vo.getCustoNo() %></td>
