@@ -30,9 +30,9 @@
 		<% 
 	}
 /* 	if( volist.size() == 0 || volist == null) { *//*  >> 이거 안된다 nullpointerexception이 뜬다 or 연산자 때문에 */
-/* 	if(volist == null || volist.size() == 0){  >> 이건된다 */
+ 	if(volist == null || volist.size() == 0){  // 이건된다 
 	/* if(volist == null){ */
- 	if(volist.size() == 0){ 
+ 	/* if(volist.size() == 0){  */
 		%>
 		<h2>결과물이 없습니다.</h2>
 		<%

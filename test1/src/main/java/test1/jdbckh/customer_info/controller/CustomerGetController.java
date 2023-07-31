@@ -30,11 +30,16 @@ public class CustomerGetController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //		 1. 전달받은 parameter 읽어내기
-		  String custNo= request.getParameter("sno");
-		  System.out.println(custNo);
+		  String custNoStr= request.getParameter("sno");
+		  System.out.println(custNoStr);
+		  int custNo = 0;
+		  try {
+			  custNo = Integer.parseInt(custNoStr);
+		  }catch (Exception e) {
+		  }
 //		  2.  전달받은 데이터를 활용해 DB학생 상세 정보 가져오기
 		  CustomerInfoDao dao = new CustomerInfoDao();
-		  CustomerInfoVo vo = dao.selectListCustomerInfo(custNo);
+		  CustomerInfoVo vo = dao.selectOneCustomerInfo(custNo);
 //		  3. DB으로부터 전달받은 데이터를 JSP에 전달함
 		  System.out.println(vo);
 			request.setAttribute("CustomerInfoList", vo);

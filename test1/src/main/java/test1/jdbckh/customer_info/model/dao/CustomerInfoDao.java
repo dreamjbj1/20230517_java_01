@@ -12,8 +12,50 @@ import java.util.List;
 import test1.jdbckh.customer_info.model.vo.CustomerInfoVo;
 
 public class CustomerInfoDao {
+<<<<<<< HEAD
 	
 	                            
+=======
+	public CustomerInfoVo selectOneCustomerInfo(int custNo) {
+		System.out.println("DAO selectOneCustomerInfo() arg:" + custNo);
+		
+		CustomerInfoVo result = null;
+		String query = "SELECT * FROM CUSTOMER_INFO";
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+	try {
+		Class.forName("oracle.jdbc.driver.OracleDriver");
+		conn = DriverManager.getConnection("jdbc:oracle:thin:@127.0.0.1:1521:xe","jbj","jbj");
+		pstmt = conn.prepareStatement(query);
+		rset = pstmt.executeQuery();
+		if(rset.next()) {
+			result = new CustomerInfoVo();
+			result.setCustoNo(rset.getInt("custNo"));
+			result.setCustName(rset.getString("custName"));
+			result.setPhone(rset.getString("phone"));
+			result.setAddress(rset.getString("address"));
+			result.setJoinDate(rset.getDate("joindate"));
+			result.setGrade(rset.getString("grade"));
+			result.setGrade(rset.getString("city"));
+		}
+	 }catch (Exception e) {
+			e.printStackTrace();
+		 }finally {
+			try {
+				if(rset !=null) rset.close();
+				if(pstmt != null)pstmt.close();
+				if(conn != null)conn.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		 }
+		 System.out.println(result);
+		 return result;
+	 }
+	
+>>>>>>> aaae88ed2b02e257f0df7f5bf36b5265cb325a9a
 	public List<CustomerInfoVo> selectListCustomerInfo() {
 		
 			List<CustomerInfoVo> result = null;
