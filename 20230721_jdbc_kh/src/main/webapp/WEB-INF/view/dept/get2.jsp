@@ -1,19 +1,18 @@
-<%@page import="kh.test.jdbckh.department.model.vo.DepartmentVo"%>
+<%@page import="kh.test.jdbckh.department.model.dto.DepartmentDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>부서 상세 정보</title>
+<title>학과 정보</title>
 </head>
 <body>
-	<h4>부서 상세 정보</h4>
+	<h4>학과 정보</h4>
 	
-	<%
-	DepartmentVo vo = (DepartmentVo)request.getAttribute("departmentList");
-	
-	%>
+ 	<%
+	DepartmentDto vo = (DepartmentDto)request.getAttribute("deptList");
+	 %> 
 	<table border="1">
 	<tr>
 		<td>부서번호</td>
@@ -24,14 +23,14 @@
 	</tr>
 
 		<tr>
-		<td><%=vo.getDepartment_No() %></td>
-		<td><%=vo.getDepartment_Name() %></td>
+		<td><%=vo.getDepartmentNo() %></td>
+		<td><%=vo.getDepartmentName() %></td>
 		<td><%=vo.getCategory() %></td>
-		<td><%=vo.getOpen_Yn() %>
+		<td><%=vo.getOpenYn() %>
 		<td><%=vo.getCapacity() %>
 		</tr>
 			
 	</table>
 	
 </body>
-</html>
+</html> 

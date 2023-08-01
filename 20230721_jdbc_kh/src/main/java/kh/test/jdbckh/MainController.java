@@ -1,7 +1,7 @@
-package kh.test.jdbckh.board.controller;
+package kh.test.jdbckh;
 
 import java.io.IOException;
-import java.util.List;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,34 +9,33 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import kh.test.jdbckh.board.model.dto.BoardDto;
-import kh.test.jdbckh.board.model.service.BoardService;
-
 /**
- * Servlet implementation class BoardListServlet
+ * Servlet implementation class MainController
  */
-@WebServlet("/board/list")
-public class BoardLIstServlet extends HttpServlet {
+@WebServlet("/main")
+public class MainController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BoardLIstServlet() {
+    public MainController() {
         super();
+        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 1. request.getParameter()
-		// 2. service.selectList();
-		List<BoardDto> result = new BoardService().selectList();
-		// 3. 
-		request.setAttribute("boardList", result);
-		// 4.
-		request.getRequestDispatcher("/WEB-INF/view/board/list.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/view/main.jsp").forward(request, response);
+// 아래 방식은 MVC model2 방식에서 사용하지 않음. 비추. 위 방식으로 사용함.
+		//response.getWriter().append("Served at: ").append(request.getContextPath()).append("<h1>안녕</h1>");
+//		PrintWriter out = response.getWriter();
+//		out.println("<h1>안녕</h1>");
+//		out.println("<script>alert('작은따옴표경고창');</script>");
+//		out.flush();
+//		out.close();
 	}
 
 	/**

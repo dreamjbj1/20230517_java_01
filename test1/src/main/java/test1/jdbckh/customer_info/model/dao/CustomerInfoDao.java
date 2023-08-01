@@ -85,8 +85,7 @@ public class CustomerInfoDao {
 					vo.setGrade(rs.getString("Grade"));
 					vo.setCity(rs.getString("City"));
 					
-					result.add(vo);
-					
+					result.add(vo);	
 				}
 				
 			} catch (ClassNotFoundException e) {

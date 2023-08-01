@@ -3,7 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!-- 함수 만들어 사용할 수이 ㅆ음 -- taglib에 넣어두고 사용하는 경우가 많음  -->
+<!-- 함수 만들어 사용할 수 있음 -- taglib에 넣어두고 사용하는 경우가 많음  -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,7 +18,9 @@
 	<input type="search" name="searchWord">
 	<input type="submit" value="찾기">
 	</form>
-	</div>  
+	</div>
+	
+	  
 	<%
 	// JSP Tag - java문법
 	List<StudentVo> volist= (List<StudentVo>)request.getAttribute("studentList");	
