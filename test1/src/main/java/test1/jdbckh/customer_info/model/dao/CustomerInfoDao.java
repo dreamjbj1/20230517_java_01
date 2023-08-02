@@ -119,3 +119,102 @@ public class CustomerInfoDao {
 	
 	
 }// CLASS
+
+//package test1.jdbckh.customer_info.model.dao;
+//
+//import java.sql.Connection;
+//import java.sql.DriverManager;
+//import java.sql.PreparedStatement;
+//import java.sql.ResultSet;
+//import java.sql.SQLException;
+//import java.sql.Statement;
+//import java.util.ArrayList;
+//import java.util.List;
+//
+//import test1.jdbckh.customer_info.model.vo.CustomerInfoVo;
+//import static test1.jdbckh.common.jdbc.JdbcTemplate.*;
+//
+//public class CustomerInfoDao {
+//
+//	                            
+//	public CustomerInfoVo selectOneCustomerInfo(int custNo) {
+//		
+//		CustomerInfoVo result = null;
+//		String query = "SELECT * FROM CUSTOMER_INFO";
+//		Connection conn = null;
+//		PreparedStatement pstmt = null;
+//		ResultSet rset = null;
+//		
+//	try {
+//		conn = getConnection();
+//		pstmt = conn.prepareStatement(query);
+//		rset = pstmt.executeQuery();
+//		if(rset.next()) {
+//			result = new CustomerInfoVo();
+//			result.setCustoNo(rset.getInt("CustNo"));
+//			result.setCustName(rset.getString("CustName"));
+//			result.setPhone(rset.getString("Phone"));
+//			result.setAddress(rset.getString("Address"));
+//			result.setJoinDate(rset.getDate("JoinDate"));
+//			result.setGrade(rset.getString("Grade"));
+//			result.setGrade(rset.getString("City"));
+//		}
+//	 }catch (Exception e) {
+//			e.printStackTrace();
+//		 }finally {
+//			try {
+//				if(rset !=null) rset.close();
+//				if(pstmt != null)pstmt.close();
+//				if(conn != null)conn.close();
+//			} catch (Exception e2) {
+//				e2.printStackTrace();
+//			}
+//		 }
+//		 System.out.println(result);
+//		 return result;
+//	 }
+//// 전체 테이블 나오기 
+//	public List<CustomerInfoVo> selectListCustomerInfo() {
+//		
+//			List<CustomerInfoVo> result = null;
+//			String query = "select * from CUSTOMER_INFO";
+//			Connection conn = null;
+//			Statement stmt = null;
+//			PreparedStatement pstmt = null;
+//			ResultSet rs = null;
+//			
+//			try{
+//				conn = getConnection();
+//				pstmt = conn.prepareStatement(query);
+//				rs = pstmt.executeQuery();
+//			
+//				result = new ArrayList<CustomerInfoVo>();
+//				while(rs.next() == true) {
+//					CustomerInfoVo vo = new CustomerInfoVo();
+//					vo.setCustoNo(rs.getInt("CustNo"));
+//					vo.setCustName(rs.getString("CustName"));
+//					vo.setPhone(rs.getString("phone"));
+//					vo.setAddress(rs.getString("Address"));
+//					vo.setJoinDate(rs.getDate("JoinDate"));
+//					vo.setGrade(rs.getString("Grade"));
+//					vo.setCity(rs.getString("City"));
+//					
+//					result.add(vo);	
+//				}
+//				
+//			} catch (SQLException e) {
+////				2. dbms에 연결 실패.
+//				e.printStackTrace();	
+//			} finally {
+//				close(rs);
+//				close(pstmt);
+//				close(conn);
+//			}
+//			
+//			return result;
+//		} // FUNCTION
+//	
+//	
+//	
+//	
+//}// CLASS

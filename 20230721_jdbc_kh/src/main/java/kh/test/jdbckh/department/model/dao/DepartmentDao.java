@@ -1,6 +1,6 @@
 package kh.test.jdbckh.department.model.dao;
 
-import static kh.test.jdbckh.common.jdbc.JdbcTemplate.close;
+	import static kh.test.jdbckh.common.jdbc.JdbcTemplate.close;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -23,7 +23,7 @@ public class DepartmentDao {
 	}
 	// 한 행 읽기 - PK로where조건
 	public DepartmentDto selectOne(Connection conn, String departmentNo){
-		System.out.println("[Dept Dao selectOne] departmentNo:"+departmentNo);
+//		System.out.println("[Dept Dao selectOne] departmentNo:"+departmentNo);
 		DepartmentDto result = null;
 		String query = "select DEPARTMENT_NO, DEPARTMENT_NAME, CATEGORY, OPEN_YN, CAPACITY from tb_Department"
 					+ " where DEPARTMENT_NO = ?";
@@ -46,7 +46,7 @@ public class DepartmentDao {
 			close(rs);
 			close(pstmt);
 		}
-		System.out.println("[Dept Dao selectOne] return:"+result);
+//		System.out.println("[Dept Dao selectOne] return:"+result);
 		return result;
 	}
 	// 한 행 삽입 - DepartmentDto 자료형을 받아와야 함.

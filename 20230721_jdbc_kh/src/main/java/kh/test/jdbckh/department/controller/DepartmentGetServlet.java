@@ -36,7 +36,7 @@ public class DepartmentGetServlet extends HttpServlet {
 			// 3. DB로부터 전달받은 데이터를 JSP에 전달함.
 			request.setAttribute("deptList", vo);
 			// 4. JSP 파일 forward로 열기
-			request.getRequestDispatcher("/WEB-INF/view/dept/get2.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/view/dept/get.jsp").forward(request, response);
 		}
 
 	}

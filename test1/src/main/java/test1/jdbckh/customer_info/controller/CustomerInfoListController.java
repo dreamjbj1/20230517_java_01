@@ -19,19 +19,8 @@ import test1.jdbckh.customer_info.model.vo.CustomerInfoVo;
 public class CustomerInfoListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public CustomerInfoListController() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("/customer/list doGet() 진입");
+		System.out.println("/customer/list doGet() 진입");		
 		CustomerInfoDao dao = new CustomerInfoDao();
 		List<CustomerInfoVo> result = dao.selectListCustomerInfo();
 		request.setAttribute("CustomerInfoList", result);

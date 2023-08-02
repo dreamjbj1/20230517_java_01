@@ -19,17 +19,6 @@ import test1.jdbckh.sales_info.model.vo.SalesInfoVo;
 public class SalesInfoListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public SalesInfoListController() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("/sales/list doGet() 진입");
 		SalesInfoDao dao = new SalesInfoDao();

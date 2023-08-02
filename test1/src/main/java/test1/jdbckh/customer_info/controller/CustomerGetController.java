@@ -17,17 +17,7 @@ import test1.jdbckh.customer_info.model.vo.CustomerInfoVo;
 public class CustomerGetController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public CustomerGetController() {
-        super();
-        // TODO Auto-generated constructor stub
     }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //		 1. 전달받은 parameter 읽어내기
 		  String custNoStr= request.getParameter("sno");

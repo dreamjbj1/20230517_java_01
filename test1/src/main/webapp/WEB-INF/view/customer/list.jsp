@@ -29,7 +29,6 @@
 		<%
 		for(int i=0; i<volist.size(); i++){
 			CustomerInfoVo vo = volist.get(i);
-		
 		%>
 		
 		<tr>
