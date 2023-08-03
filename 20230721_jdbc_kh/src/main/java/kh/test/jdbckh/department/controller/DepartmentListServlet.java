@@ -45,7 +45,7 @@ public class DepartmentListServlet extends HttpServlet {
 		List<DepartmentDto> deptList = service.selectList(currentPage, PAGE_SIZE, searchWord);
 		request.setAttribute("deptList", deptList);
 //		request.setAttribute("deptList", deptList);
-		request.getRequestDispatcher("/WEB-INF/view/dept/list2.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/view/dept/list.jsp").forward(request, response);
 	}
 
 	/**
