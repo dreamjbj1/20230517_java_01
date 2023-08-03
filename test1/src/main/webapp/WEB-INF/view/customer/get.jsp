@@ -16,7 +16,7 @@
 	%>
 	
 	<table border="1">
-	<tr>
+		<tr>
 		<td>회원번호</td>
 		<td>회원성명</td>
 		<td>회원전화</td>
