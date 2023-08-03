@@ -12,6 +12,42 @@ import java.util.List;
 import test1.jdbckh.sales_info.model.vo.SalesInfoVo;
 
 public class SalesInfoDao {
+	public SalesInfoVo selectOneSalesInfo(int SaleNol) {
+		
+		SalesInfoVo result = null;
+		String query = "SELECT * FROM SALES_INFO";
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+				
+	try {
+		Class.forName("oracle.jdbc.driver.OracleDriver");
+		conn = DriverManager.getConnection("jdbc:oracle:thin:@127.0.0.1:1521:xe","jbj","jbj");
+		pstmt = conn.prepareStatement(query);
+		rs = pstmt.executeQuery();
+		if(rs.next()) {
+			result = new SalesInfoVo();
+			result.setSaleNol(rs.getInt("SaleNol"));
+			result.setCustNo(rs.getInt("CustNo"));
+			result.setPcost(rs.getInt("Pcost"));
+			result.setAmount(rs.getInt("Amount"));
+			result.setPrice(rs.getInt("Price"));
+			result.setPcode(rs.getString("Pcode"));
+			result.setSdate(rs.getDate("Sdate"));
+		}
+	}catch (Exception e) {
+		e.printStackTrace();
+	}finally {
+		try {
+			if(rs !=null) rs.close();
+			if(pstmt != null)pstmt.close();
+			if(conn != null)conn.close();
+		} catch (Exception e2) {
+			e2.printStackTrace();
+		}
+	}
+		return result;
+	}
 	
 	public List<SalesInfoVo> selectListSalesInfo() {
 		List<SalesInfoVo> result = null;
