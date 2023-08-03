@@ -1,4 +1,4 @@
-<%@page import="test1.jdbckh.customer_info.model.vo.CustomerInfoVo"%>
+<%@page import="test1.jdbckh.customer_info.model.vo.MemberDto"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -12,7 +12,7 @@
 	<h2>회원 정보</h2>
 	<%
 	/* int c = (int)request.getAttribute("ccc"); */
-	List<CustomerInfoVo> volist = (List<CustomerInfoVo>)request.getAttribute("CustomerInfoList");
+		List<MemberDto> volist = (List<MemberDto>)request.getAttribute("MemberList");
 	%>
 	
 	<table border="1">
@@ -28,11 +28,11 @@
 		
 		<%
 		for(int i=0; i<volist.size(); i++){
-			CustomerInfoVo vo = volist.get(i);
+		MemberDto vo = volist.get(i);
 		%>
 		
 		<tr>
-			<td><a href="<%=request.getContextPath() %>/customer/get?sno=<%= vo.getCustoNo() %>"><%=vo.getCustoNo() %></a></td>
+			<td><a href="<%=request.getContextPath() %>/member/modify?=<%= vo.getCustoNo() %>"><%=vo.getCustoNo() %></a></td>
 			<td><%=vo.getCustName() %></td>
 			<td><%=vo.getPhone() %></td>
 			<td><%=vo.getAddress() %></td>

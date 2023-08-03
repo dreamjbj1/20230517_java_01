@@ -1,16 +1,18 @@
+<%@page import="test1.jdbckh.customer_info.model.vo.MemberDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>홈쇼핑 </title>
+<title>회원목록조회/수정</title>
 </head>
 <body>
-	<h2>홈쇼핑 회원 등록</h2>
+	<h2>회원목록조회/수정</h2>
+
 	<div class="container">
-	<form action="<%=request.getContextPath() %>/customer/insert.do" method="post">
-		<table>
+	<form action="<%=request.getContextPath() %>/member/list" method="get">
+		<table border="1">
 			<tr>
 				<th>회원번호(자동생성)</th>
 				<td><input type="text" name="CustNo"></td>
@@ -42,7 +44,7 @@
 				<td><input type="text" name="City"></td>
 			</tr>
 		</table>
-		<button type="submit">등록</button>
+		<button type="submit">수정</button>
 		<button type="search">조회</button>
 	</form>
 	</div>

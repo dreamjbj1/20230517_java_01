@@ -1,4 +1,4 @@
-package test1.jdbckh.common.jdbc;
+package edu.kh.test.user;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -16,9 +16,9 @@ public class JdbcTemplate {
 	
 	// Singleton패턴  Connection 객체가 많이 생성됨을 방지
 	public static Connection getConnection() {
-			Properties prop = new Properties();
-			String currentPath = JdbcTemplate.class.getResource("./").getPath();
-			System.out.println("currentPath: "+currentPath);
+		Properties prop = new Properties();
+		String currentPath = JdbcTemplate.class.getResource("./").getPath();
+		System.out.println("currentPath: "+currentPath);
 		
 		try {
 			// driver.properties 파일 로디암
@@ -49,7 +49,7 @@ public class JdbcTemplate {
 			// 1. driver 있다면 로딩함. // 없다면 ClassNotFoundException 오류 발생
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			// 2. Connection 객체 생성 // dbms와 연결
-			conn = DriverManager.getConnection("jdbc:oracle:thin:@127.0.0.1:1521:xe","jbj","jbj");
+			conn = DriverManager.getConnection("jdbc:oracle:thin:@127.0.0.1:1521:xe","khl","khl");
 		} 
 		catch (ClassNotFoundException e) {
 			e.printStackTrace();
@@ -130,3 +130,32 @@ public class JdbcTemplate {
 	
 	
 }
+
+
+//import java.sql.Connection;
+//import java.sql.ResultSet;
+//import java.sql.SQLException;
+//import java.sql.Statement;
+//
+//public class JdbcTemplate {
+//	public static Connection getConnection() {
+//		Connection conn = null;
+//
+//		return conn;
+//	}
+//	public static void close(Connection conn) {
+//		try {
+//			if(conn!=null) {
+//				conn.close();
+//			}
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		}
+//	}
+//	public static void close(Statement stmt) {
+//		
+//	}
+//	public static void close(ResultSet rs) {
+//		
+//	}
+//}

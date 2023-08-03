@@ -2,7 +2,7 @@ package test1.jdbckh.customer_info.model.vo;
 
 import java.sql.Date;
 
-public class CustomerInfoVo{
+public class MemberDto{
 	
 // vo -> 자료저장
 //	CUSTNO   NOT NULL NUMBER(6)    
@@ -21,10 +21,10 @@ public class CustomerInfoVo{
 	private String Grade;
 	private String City;
 	
-	public CustomerInfoVo() {
+	public MemberDto() {
 	}
 	
-	public CustomerInfoVo(int custoNo, String custName, String phone, 
+	public MemberDto(int custoNo, String custName, String phone, 
 			String address, Date joinDate, String grade,String city) {
 		
 		this.CustoNo = custoNo;
