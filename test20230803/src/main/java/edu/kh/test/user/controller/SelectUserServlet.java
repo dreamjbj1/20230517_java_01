@@ -17,7 +17,7 @@ import edu.kh.test.user.model.vo.UserDTO;
 public class SelectUserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private UserService service = new UserService();
-
+ 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			String userNoStr = request.getParameter("userNo");
 			int userNo = 0;

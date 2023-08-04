@@ -16,7 +16,7 @@ pageEncoding="UTF-8"%>
 				<td><input type="text" name="studentNo"></td>
 			</tr>
 				<tr>
-				<th>departmentNo</th>
+				<th>학과명(학과번호)</th>
 				<td><input type="text" name="departmentNo"></td>
 			</tr>
 				<tr>

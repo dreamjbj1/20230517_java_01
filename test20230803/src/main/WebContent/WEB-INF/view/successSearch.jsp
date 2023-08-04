@@ -23,6 +23,7 @@
 	<td>${udto.userAge}</td>
 	</tr>
 </table>
-	<a href="${pageContext.request.contextPath}/">메인페이지로 돌아가기</a>
+	<a href="index.jsp">메인페이지로 돌아가기</a>
+	<%-- <a href="${pageContext.request.contextPath}/">메인페이지로 돌아가기</a> --%>
 </body>
 </html>

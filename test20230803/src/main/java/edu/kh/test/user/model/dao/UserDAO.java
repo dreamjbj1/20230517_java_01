@@ -10,23 +10,71 @@ import edu.kh.test.user.model.vo.UserDTO;
 
 public class UserDAO {
 	public UserDTO selectOne(Connection conn, int userNo) {
-		UserDTO result = null;
-		String query = "select USER_NO,USER_ID,USER_NAME,USER_AGE from TB_USER where USER_NO = ?";
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		try {
-			pstmt = conn.prepareStatement(query);
-			pstmt.setInt(1, userNo);
-			rs = pstmt.executeQuery();
-			if(rs.next()) {
+	 UserDTO result = null;
+	 String query = "select USER_NO, USER_ID, USER_NAME, USER_AGE FROM TB_USER WHERE USER_NO = ?";
+	 PreparedStatement pstmt = null;
+	 ResultSet rs = null;
+	 
+	 try {
+		 pstmt=conn.prepareStatement(query);
+		 pstmt.setInt(1, userNo);
+		 rs = pstmt.executeQuery();
+		 if(rs.next()) {
 				result = new UserDTO(rs.getInt("USER_NO"), rs.getString("USER_ID"),rs.getString("USER_NAME"), rs.getInt("USER_AGE"));  
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
+				}
+					 
+		 }catch (SQLException e) {
+			 e.printStackTrace();
+		 }finally {
 			JdbcTemplate.close(rs);
 			JdbcTemplate.close(pstmt);
 		}
-		return result;
-	}
+	 return result;
+	 }
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+//	public UserDTO selectOne(Connection conn, int userNo) {
+//		UserDTO result = null;
+//		String query = "select USER_NO,USER_ID,USER_NAME,USER_AGE from TB_USER where USER_NO = ?";
+//		PreparedStatement pstmt = null;
+//		ResultSet rs = null;
+//		try {
+//			pstmt = conn.prepareStatement(query);
+//			pstmt.setInt(1, userNo);
+//			rs = pstmt.executeQuery();
+//			if(rs.next()) {
+//				result = new UserDTO(rs.getInt("USER_NO"), rs.getString("USER_ID"),rs.getString("USER_NAME"), rs.getInt("USER_AGE"));  
+//			}
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		} finally {
+//			JdbcTemplate.close(rs);
+//			JdbcTemplate.close(pstmt);
+//		}
+//		return result;
+//	}
 }
