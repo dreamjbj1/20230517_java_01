@@ -1,4 +1,4 @@
-package test1.jdbckh.customer_info.controller;
+package test1.jdbckh.member.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import test1.jdbckh.customer_info.model.dao.MemberDao;
+import test1.jdbckh.member.model.dao.MemberDao;
 
 /**
  * Servlet implementation class CustomerInsertServlet

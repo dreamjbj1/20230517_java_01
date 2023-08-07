@@ -1,4 +1,4 @@
-package test1.jdbckh.customer_info.model.dao;
+package test1.jdbckh.member.model.dao;
 
 import static test1.jdbckh.common.jdbc.JdbcTemplate.*;
 
@@ -11,7 +11,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import test1.jdbckh.customer_info.model.vo.MemberDto;
+import test1.jdbckh.member.model.vo.MemberDto;
 
 public class MemberDao {
 

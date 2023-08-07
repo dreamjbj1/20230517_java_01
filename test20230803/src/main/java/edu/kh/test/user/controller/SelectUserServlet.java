@@ -1,4 +1,4 @@
-package edu.kh.test.user.controller;
+package edu.kh.test.user.controller;			
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -41,3 +41,15 @@ public class SelectUserServlet extends HttpServlet {
 //	}
 
 }
+
+//#comment symbol
+//#jdbc
+//jdbc.driver=oracle.jdbc.driver.OracleDriver
+//lurl=jdbc:oracle:thin:@127.0.0.1:1521:xe
+//#surl=jdbc:oracle:thin:@1.122.120.195:1521:xe
+//username=khl
+//password=khl
+//
+//#open api
+//#url=http://///
+//#serviceKey=00000

@@ -1,4 +1,4 @@
-<%@page import="test1.jdbckh.customer_info.model.vo.MemberDto"%>
+<%@page import="test1.jdbckh.member.model.vo.MemberDto"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>

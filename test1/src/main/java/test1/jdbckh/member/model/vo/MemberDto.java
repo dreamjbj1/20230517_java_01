@@ -1,4 +1,4 @@
-package test1.jdbckh.customer_info.model.vo;
+package test1.jdbckh.member.model.vo;
 
 import java.sql.Date;
 

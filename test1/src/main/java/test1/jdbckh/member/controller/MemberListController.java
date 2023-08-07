@@ -1,4 +1,4 @@
-package test1.jdbckh.customer_info.controller;
+package test1.jdbckh.member.controller;
 
 import java.io.IOException;
 import java.util.List;
@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import test1.jdbckh.customer_info.model.dao.MemberDao;
-import test1.jdbckh.customer_info.model.vo.MemberDto;
+import test1.jdbckh.member.model.dao.MemberDao;
+import test1.jdbckh.member.model.vo.MemberDto;
 
 /**
  * Servlet implementation class CustomerInfoListController
