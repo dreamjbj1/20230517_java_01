@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import test1.jdbckh.member.model.dao.MemberDao;
-import test1.jdbckh.member.model.vo.MemberDto;
+import test1.jdbckh.member.model.dto.MemberDto;
 
 /**
  * Servlet implementation class CustomerInfoListController
@@ -18,8 +18,10 @@ import test1.jdbckh.member.model.vo.MemberDto;
 @WebServlet("/member/list")
 public class MemberListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+		
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
+		System.out.println("/member/list doGet()");
 		MemberDao dao = new MemberDao();
 		List<MemberDto> result = dao.MemberList();
 		request.setAttribute("MemberList", result);

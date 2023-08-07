@@ -1,4 +1,4 @@
-<%@page import="test1.jdbckh.member.model.vo.MemberDto"%>
+<%@page import="test1.jdbckh.member.model.dto.MemberDto"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -10,6 +10,11 @@
 </head>
 <body>
 	<h2>회원 정보</h2>
+	<div><a href="<%=request.getContextPath() %>/member/insert">회원등록</a></div>
+	
+	<div><a href="<%=request.getContextPath() %>/member/modify">회원목록조회/수정</a></div>
+	
+	<div><a href="<%=request.getContextPath() %>/sales/list">회원매출조회</a></div>
 	<%
 	/* int c = (int)request.getAttribute("ccc"); */
 		List<MemberDto> volist = (List<MemberDto>)request.getAttribute("MemberList");

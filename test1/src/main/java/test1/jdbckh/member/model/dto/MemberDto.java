@@ -1,4 +1,4 @@
-package test1.jdbckh.member.model.vo;
+package test1.jdbckh.member.model.dto;
 
 import java.sql.Date;
 
@@ -17,16 +17,15 @@ public class MemberDto{
 	private String CustName;
 	private String Phone;
 	private String Address;
-	private Date JoinDate;
+	private String JoinDate;
 	private String Grade;
 	private String City;
 	
 	public MemberDto() {
 	}
-	
-	public MemberDto(int custoNo, String custName, String phone, 
-			String address, Date joinDate, String grade,String city) {
-		
+
+	public MemberDto(int custoNo, String custName, String phone, String address, String joinDate, String grade,
+			String city) {
 		this.CustoNo = custoNo;
 		this.CustName = custName;
 		this.Phone = phone;
@@ -38,8 +37,8 @@ public class MemberDto{
 
 	@Override
 	public String toString() {
-		return "Customer_Info [CustoNo=" + CustoNo + ", CustName=" + CustName + ", Phone=" + Phone + ", Address="
-				+ Address + ", JoinDate=" + JoinDate + ", Grade=" + Grade + ", City=" + City + "]";
+		return "MemberDto [CustoNo=" + CustoNo + ", CustName=" + CustName + ", Phone=" + Phone + ", Address=" + Address
+				+ ", JoinDate=" + JoinDate + ", Grade=" + Grade + ", City=" + City + "]";
 	}
 
 	public int getCustoNo() {
@@ -74,11 +73,11 @@ public class MemberDto{
 		Address = address;
 	}
 
-	public Date getJoinDate() {
+	public String getJoinDate() {
 		return JoinDate;
 	}
 
-	public void setJoinDate(Date joinDate) {
+	public void setJoinDate(String joinDate) {
 		JoinDate = joinDate;
 	}
 
@@ -97,5 +96,12 @@ public class MemberDto{
 	public void setCity(String city) {
 		City = city;
 	}
-
+	
+	
+	
+	
+	
+	
 }
+
+

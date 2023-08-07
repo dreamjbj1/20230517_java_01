@@ -1,17 +1,15 @@
-<%@page import="test1.jdbckh.member.model.dto.MemberDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원목록조회/수정</title>
+<title>회원등록</title>
 </head>
 <body>
-	<h2>회원목록조회/수정</h2>
-
-	<div class="container">
-	<form action="<%=request.getContextPath() %>/member/list" method="get">
+	<h2>회원등록</h2>
+		<div class="container">
+	<form action="<%=request.getContextPath() %>/member/insert.do" method="post">
 		<table border="1">
 			<tr>
 				<th>회원번호(자동생성)</th>
@@ -44,10 +42,11 @@
 				<td><input type="text" name="City"></td>
 			</tr>
 		</table>
-		<button type="submit">수정</button>
+		<button type="submit">등록</button>
 		<button type="search">조회</button>
 	</form>
 	</div>
+	
 	
 </body>
 </html>
