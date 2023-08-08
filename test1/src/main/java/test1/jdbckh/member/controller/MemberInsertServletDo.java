@@ -44,9 +44,7 @@ public class MemberInsertServletDo extends HttpServlet {
 		String city = request.getParameter("city");
 		System.out.println("[!!!!!!!!!!!]");
 		System.out.println(custName);
-//		String query = "insert into CUSTOMER_INFO VALUES (seq_no.nextval,?,?,?,?,?,?)";
-//		Connection conn = null;
-//		PreparedStatement pstmt = null;
+
 			
 		
 		MemberDto dto = new MemberDto();

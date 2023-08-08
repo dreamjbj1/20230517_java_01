@@ -1,4 +1,4 @@
-package test1.jdbckh.sales_info.dao;
+package test1.jdbckh.money.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -9,13 +9,13 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import test1.jdbckh.sales_info.dto.SalesInfoDto;
+import test1.jdbckh.money.dto.MoneyDto;
 
 
-public class SalesInfoDao {
-	public List<SalesInfoDto> selectListSalesInfo() {
-		List<SalesInfoDto> result = null;
-		String query = "select * from SALES_INFO";
+public class MoneyDao {
+	public List<MoneyDto> selectListMoney() {
+		List<MoneyDto> result = null;
+		String query = "SELECT * from money";
 		Connection conn = null;
 		Statement stmt = null;
 		PreparedStatement pstmt = null;
@@ -24,25 +24,16 @@ public class SalesInfoDao {
 			try{
 				Class.forName("oracle.jdbc.driver.OracleDriver");
 				conn = DriverManager.getConnection("jdbc:oracle:thin:@127.0.0.1:1521:xe", "jbj", "jbj");
-//				if(conn != null) {
-//					System.out.println("DB연결 성공!!!!!!!");
-//				} else {
-//					System.out.println("-------- DB 연결 실패--------------");
-//				}		
-//				String query = "select * from SALES_INFO";
 				pstmt = conn.prepareStatement(query);
 				ResultSet rs = pstmt.executeQuery();
 				
-				result = new ArrayList<SalesInfoDto>();
+				result = new ArrayList<MoneyDto>();
 				while(rs.next() == true) {
-					SalesInfoDto dto = new SalesInfoDto();
-					dto.setSaleNol(rs.getInt("SaleNol"));
+					MoneyDto dto = new MoneyDto();
 					dto.setCustNo(rs.getInt("CustNo"));
-					dto.setPcost(rs.getInt("Pcost"));
-					dto.setAmount(rs.getInt("Amount"));
-					dto.setPrice(rs.getInt("Price"));
-					dto.setPcode(rs.getString("Pcode"));
-					dto.setSdate(rs.getDate("Sdate"));
+					dto.setCustName(rs.getString("CustName"));
+					dto.setGrade(rs.getString("Grade"));
+					dto.setTotal(rs.getInt("Total"));
 					
 					result.add(dto);
 				}

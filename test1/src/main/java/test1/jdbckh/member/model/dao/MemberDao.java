@@ -19,7 +19,7 @@ public class MemberDao {
 	public int insertMember(Connection conn, MemberDto dto) {
 		System.out.println("[insertMember dao] dto: "+dto);
 		int result = 0;
-		String query = "insert into CUSTOMER_INFO VALUES (seq_no.nextval,?,?,?,to_date(?,'yyyymmdd hh24:mi:ss'),?,?)";
+		String query = "insert into CUSTOMER_INFO VALUES (seq_no.nextval,?,?,?,to_date(?,'yyyy-mm-dd'),?,?)";
 		PreparedStatement pstmt = null;
 		try {
 			pstmt = conn.prepareStatement(query);

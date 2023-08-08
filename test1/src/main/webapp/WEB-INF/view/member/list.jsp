@@ -15,7 +15,7 @@
 	
 	<div><a href="<%=request.getContextPath() %>/member/modify">회원목록조회/수정</a></div>
 	
-	<div><a href="<%=request.getContextPath() %>/sales/list">회원매출조회</a></div>
+	<div><a href="<%=request.getContextPath() %>/member/money">회원매출조회</a></div>
 
 	<%
 		List<MemberDto> volist = (List<MemberDto>)request.getAttribute("MemberList");

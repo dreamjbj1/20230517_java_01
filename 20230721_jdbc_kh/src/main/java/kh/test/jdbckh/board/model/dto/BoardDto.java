@@ -1,5 +1,9 @@
 package kh.test.jdbckh.board.model.dto;
 
+import java.util.List;
+
+import kh.test.jdbckh.member.model.dto.Member;
+
 public class BoardDto {
 //	BNO         NOT NULL NUMBER         
 //	BTITLE      NOT NULL VARCHAR2(300)  
@@ -17,9 +21,13 @@ public class BoardDto {
 	private int bref;
 	private int breLevel;
 	private int breStep;
+//	private List<Member> memberList;
+	// 1:n 관계
+	//private List<String> filepathList;
+	private List<AttachFileDto> attachFileList;
 
-//	public BoardDto() {
-//	}
+	public BoardDto() {
+	}
 	// selectOne dao --> controll --> view
 	public BoardDto(int bno, String btitle, String bcontent, String bwriteDate, String mid, int bref, int breLevel,
 			int breStep) {
@@ -57,10 +65,13 @@ public class BoardDto {
 		this.mid = mid;
 	}
 
+	
+
 	@Override
 	public String toString() {
 		return "BoardDto [bno=" + bno + ", btitle=" + btitle + ", bcontent=" + bcontent + ", bwriteDate=" + bwriteDate
-				+ ", mid=" + mid + ", bref=" + bref + ", breLevel=" + breLevel + ", breStep=" + breStep + "]";
+				+ ", mid=" + mid + ", bref=" + bref + ", breLevel=" + breLevel + ", breStep=" + breStep
+				+ ", attachFileList=" + attachFileList + "]";
 	}
 	public int getBno() {
 		return bno;
@@ -109,6 +120,12 @@ public class BoardDto {
 	}
 	public void setBreStep(int breStep) {
 		this.breStep = breStep;
+	}
+	public List<AttachFileDto> getAttachFileList() {
+		return attachFileList;
+	}
+	public void setAttachFileList(List<AttachFileDto> attachFileList) {
+		this.attachFileList = attachFileList;
 	}
 	
 }
