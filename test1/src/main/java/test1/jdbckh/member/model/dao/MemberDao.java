@@ -17,25 +17,26 @@ import static test1.jdbckh.common.jdbc.JdbcTemplate.*;
 public class MemberDao {
 	
 	public int insertMember(Connection conn, MemberDto dto) {
+		System.out.println("[insertMember dao] dto: "+dto);
 		int result = 0;
-		String query = "select * from CUSTOMER_INFO";
+		String query = "insert into CUSTOMER_INFO VALUES (seq_no.nextval,?,?,?,to_date(?,'yyyymmdd hh24:mi:ss'),?,?)";
 		PreparedStatement pstmt = null;
 		try {
 			pstmt = conn.prepareStatement(query);
-			pstmt.setInt(1, dto.getCustoNo());
-			pstmt.setString(2, dto.getCustName());
-			pstmt.setString(3, dto.getPhone());
-			pstmt.setString(4, dto.getAddress());
-			pstmt.setString(5, dto.getJoinDate());
-			pstmt.setString(6, dto.getGrade());
-			pstmt.setString(7, dto.getCity());
+//			pstmt.setInt(1, dto.getCustoNo());
+			pstmt.setString(1, dto.getCustName());
+			pstmt.setString(2, dto.getPhone());
+			pstmt.setString(3, dto.getAddress());
+			pstmt.setString(4, dto.getJoinDate());
+			pstmt.setString(5, dto.getGrade());
+			pstmt.setString(6, dto.getCity());
 			result = pstmt.executeUpdate();
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
 			close(pstmt);
 		}
-		System.out.println("[member insert dao result]"+result);
+		System.out.println("[insertMember dao result]"+result);
 		return result;
 	}
 	  
@@ -64,7 +65,7 @@ public class MemberDao {
 					dto.setJoinDate(rs.getString("joinDate"));
 					dto.setGrade(rs.getString("Grade"));
 					dto.setCity(rs.getString("City"));
-					System.out.println("durl");
+	
 					result.add(dto);	
 				}
 				
@@ -76,7 +77,7 @@ public class MemberDao {
 				close(pstmt);
 				close(conn);
 			}
-			System.out.println(result);
+//			System.out.println(result);
 			return result;
 		} // FUNCTION
 	

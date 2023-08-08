@@ -1,7 +1,9 @@
 package test1.jdbckh.member.controller;
 
 import java.io.IOException;
+import java.sql.Connection;
 import java.sql.Date;
+import java.sql.PreparedStatement;
 import java.text.SimpleDateFormat;
 
 import javax.servlet.ServletException;
@@ -27,6 +29,7 @@ public class MemberInsertServletDo extends HttpServlet {
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		String custNoStr = request.getParameter("custNo");
 		int custNo = 0;
 		try {
@@ -36,22 +39,22 @@ public class MemberInsertServletDo extends HttpServlet {
 		String custName = request.getParameter("custName");
 		String phone = request.getParameter("phone");
 		String address = request.getParameter("address");
-		
-		String joinDateStr = request.getParameter("joinDate");
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		try {
-			  Date date = (Date) sdf.parse(joinDateStr);
-		} catch (java.text.ParseException e) {
-		}
+		String joinDate = request.getParameter("joinDate");
 		String grade = request.getParameter("grade");
 		String city = request.getParameter("city");
+		System.out.println("[!!!!!!!!!!!]");
+		System.out.println(custName);
+//		String query = "insert into CUSTOMER_INFO VALUES (seq_no.nextval,?,?,?,?,?,?)";
+//		Connection conn = null;
+//		PreparedStatement pstmt = null;
+			
 		
 		MemberDto dto = new MemberDto();
 		dto.setCustoNo(custNo);
 		dto.setCustName(custName);
 		dto.setPhone(phone);
 		dto.setAddress(address);
-		dto.setJoinDate(joinDateStr);
+		dto.setJoinDate(joinDate);
 		dto.setGrade(grade);
 		dto.setCity(city);
 		

@@ -13,37 +13,37 @@
 		<table border="1">
 			<tr>
 				<th>회원번호(자동생성)</th>
-				<td><input type="text" name="CustNo"></td>
+				<td><input type="text" name="custNo"></td>
 			</tr>
 				<tr>
 				<th>회원성명</th>
-				<td><input type="text" name="CustName"></td>
+				<td><input type="text" name="custName"></td>
 			</tr>
 				<tr>
 				<th>회원전화</th>
-				<td><input type="text" name="Phone"></td>
+				<td><input type="text" name="phone"></td>
 			</tr>
 				<tr>
 				<th>회원주소</th>
-				<td><input type="text" name="Address"></td>
+				<td><input type="text" name="address"></td>
 			</tr>
 			</tr>
 				<tr>
-				<th>가입일자</th>
-				<td><input type="text" name="JoinDate"></td>
+				<th>가입일자 yyyy-mm-dd</th>
+				<td><input type="text" name="joinDate"></td>
 			</tr>
 			<tr>
 					<th>고객등급[A:VIP,B:일반,C:직원]</th>
-					<td><input type="text" name="Grade"></td>
+					<td><input type="text" name="grade"></td>
 				</tr>
 			</tr>
 				<tr>
 				<td>도시코드</td>
-				<td><input type="text" name="City"></td>
+				<td><input type="text" name="city"></td>
 			</tr>
 		</table>
 		<button type="submit">등록</button>
-		<button type="search">조회</button>
+		<button type="button">조회</button>
 	</form>
 	</div>
 	

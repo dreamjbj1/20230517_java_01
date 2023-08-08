@@ -44,10 +44,21 @@
 				<td><input type="text" name="City"></td>
 			</tr>
 		</table>
+		
 		<button type="submit">수정</button>
 		<button type="search">조회</button>
 	</form>
 	</div>
 	
 </body>
+<script>
+	function Check(){
+		alert("회원정보수정이 완료되었습니다.");
+		return true;
+	}
+	
+	function moveList(){
+		location.href="member.jsp";
+	}
+</script>
 </html>
