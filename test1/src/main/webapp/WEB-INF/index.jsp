@@ -11,8 +11,10 @@
 </head>
 <body>
 
-<h2>메인</h2>
-<%-- <header> 홈쇼핑 회원관리 version 1.0 ver</header>
+
+<<header style= " position: fixed ; top: 0px ; width: 100% ; height: 40px " ;
+background-color: blue ; color : white; text-align: center ; line-height: 40px
+font-size: 30px "> 쇼핑몰 회원관리 version 1.0 ver</header>
 
 <nav>
 	<div><a href="<%=request.getContextPath() %>/member/insert">회원등록</a>
@@ -38,6 +40,6 @@
 	
 	<footer>
 		<center>Mollang 20.08.29 ver1.0</center>	
-	</footer> --%>
+	</footer> 
 </body>
 </html>
