@@ -7,10 +7,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 
-import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -25,13 +22,7 @@ import kh.test.jdbckh.board.model.service.BoardService;
 @WebServlet("/board/read")
 public class BoardReadServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private BoardService service = null;
-
-	@Override
-	public void init(ServletConfig config) throws ServletException {
-		super.init(config);
-		service = new BoardService();
-	}
+	private BoardService service = new BoardService();
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String bnoStr = request.getParameter("bno");
 		int bno = 0;
@@ -89,4 +80,4 @@ public class BoardReadServlet extends HttpServlet {
 	        conn.disconnect();
 	        System.out.println(sb.toString());
 	    }
-}
+}	

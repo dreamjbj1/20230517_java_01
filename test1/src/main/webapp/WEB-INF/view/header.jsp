@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	<h2>쇼핑몰 회원관리</h2>
 </body>
 </html>

@@ -11,11 +11,13 @@
 <body>
 	<h2>회원 정보</h2>
 	
-	<div><a href="<%=request.getContextPath() %>/member/insert">회원등록</a></div>
+	<div><a href="<%=request.getContextPath() %>/member/insert">회원등록</a>
 	
-	<div><a href="<%=request.getContextPath() %>/member/modify">회원목록조회/수정</a></div>
+	<a href="<%=request.getContextPath() %>/member/modify">회원목록조회/수정</a>
 	
-	<div><a href="<%=request.getContextPath() %>/member/money">회원매출조회</a></div>
+	<a href="<%=request.getContextPath() %>/member/money">회원매출조회</a>
+	
+	<a href="<%=request.getContextPath() %>/member/list">홈으로</a></div>
 
 	<%
 		List<MemberDto> volist = (List<MemberDto>)request.getAttribute("MemberList");
@@ -38,7 +40,7 @@
 		%>
 		
 		<tr>
-			<td><a href="<%=request.getContextPath() %>/member/modify?=<%= vo.getCustoNo() %>"><%=vo.getCustoNo() %></a></td>
+			<td><a href="<%=request.getContextPath() %>/member/modify?custNo=<%= vo.getCustNo() %>"><%=vo.getCustNo() %></a></td>
 			<td><%=vo.getCustName() %></td>
 			<td><%=vo.getPhone() %></td>
 			<td><%=vo.getAddress() %></td>

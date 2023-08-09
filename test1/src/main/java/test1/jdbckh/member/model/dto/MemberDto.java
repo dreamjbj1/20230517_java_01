@@ -13,7 +13,7 @@ public class MemberDto{
 //	GRADE             CHAR(1)      
 //	CITY              CHAR(2)
 	
-	private int CustoNo;
+	private int CustNo;
 	private String CustName;
 	private String Phone;
 	private String Address;
@@ -24,9 +24,9 @@ public class MemberDto{
 	public MemberDto() {
 	}
 
-	public MemberDto(int custoNo, String custName, String phone, String address, String joinDate, String grade,
+	public MemberDto(int custNo, String custName, String phone, String address, String joinDate, String grade,
 			String city) {
-		this.CustoNo = custoNo;
+		this.CustNo = custNo;
 		this.CustName = custName;
 		this.Phone = phone;
 		this.Address = address;
@@ -37,16 +37,16 @@ public class MemberDto{
 
 	@Override
 	public String toString() {
-		return "MemberDto [CustoNo=" + CustoNo + ", CustName=" + CustName + ", Phone=" + Phone + ", Address=" + Address
+		return "MemberDto [CustNo=" + CustNo + ", CustName=" + CustName + ", Phone=" + Phone + ", Address=" + Address
 				+ ", JoinDate=" + JoinDate + ", Grade=" + Grade + ", City=" + City + "]";
 	}
 
-	public int getCustoNo() {
-		return CustoNo;
+	public int getCustNo() {
+		return CustNo;
 	}
 
-	public void setCustoNo(int custoNo) {
-		CustoNo = custoNo;
+	public void setCustNo(int custNo) {
+		CustNo = custNo;
 	}
 
 	public String getCustName() {
@@ -100,8 +100,5 @@ public class MemberDto{
 	
 	
 	
-	
-	
 }
-
-
+	

@@ -1,11 +1,6 @@
 package test1.jdbckh.member.controller;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.text.SimpleDateFormat;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,17 +11,15 @@ import test1.jdbckh.member.model.dto.MemberDto;
 import test1.jdbckh.member.service.MemberService;
 
 /**
- * Servlet implementation class MemberInsertServletDo
+ * Servlet implementation class MemberModifyServletDo
  */
-@WebServlet("/member/insert.do")
-public class MemberInsertServletDo extends HttpServlet {
+@WebServlet("/member/modify.do")
+public class MemberModifyServletDo extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	MemberService service = new MemberService();
-	
-//protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//
-//}
-
+      MemberService service = new MemberService();
+      
+//	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
@@ -56,8 +49,14 @@ public class MemberInsertServletDo extends HttpServlet {
 		dto.setGrade(grade);
 		dto.setCity(city);
 		
-		int result = service.insertMember(dto);
-		response.sendRedirect(request.getContextPath()+"/member/list");
-}
+		int result = service.update(dto);
+		System.out.println(result);
+		if(result > 0) {
+			// success
+			response.sendRedirect(request.getContextPath()+"/member/list");
+		} else {
+			response.sendRedirect(request.getContextPath()+"/member/modify?custNo"+custNoStr);
+		}
+	}
 
 }

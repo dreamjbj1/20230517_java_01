@@ -11,42 +11,42 @@
 	<h2>회원목록조회/수정</h2>
 
 	<div class="container">
-	<form action="<%=request.getContextPath() %>/member/list" method="get">
+	<form action="<%=request.getContextPath() %>/member/modify.do" method="post">
 		<table border="1">
 			<tr>
 				<th>회원번호(자동생성)</th>
-				<td><input type="text" name="custNo"></td>
+				<td><input type="text" name="custNo" value="${mvo.custNo}" readonly></td>
 			</tr>
 				<tr>
 				<th>회원성명</th>
-				<td><input type="text" name="custName"></td>
+				<td><input type="text" name="custName" value="${mvo.custName}"></td>
 			</tr>
 				<tr>
 				<th>회원전화</th>
-				<td><input type="text" name="phone"></td>
+				<td><input type="text" name="phone"  value="${mvo.phone}"></td>
 			</tr>
 				<tr>
 				<th>회원주소</th>
-				<td><input type="text" name="address"></td>
+				<td><input type="text" name="address" value="${mvo.address}"></td>
 			</tr>
 			</tr>
 				<tr>
 				<th>가입일자</th>
-				<td><input type="text" name="joinDate"></td>
+				<td><input type="text" name="joinDate" value="${mvo.joinDate}"></td>
 			</tr>
 			<tr>
 					<th>고객등급[A:VIP,B:일반,C:직원]</th>
-					<td><input type="text" name="grade"></td>
+					<td><input type="text" name="grade" value="${mvo.grade}"></td>
 				</tr>
 			</tr>
 				<tr>
 				<td>도시코드</td>
-				<td><input type="text" name="city"></td>
+				<td><input type="text" name="city" value="${mvo.city}"></td>
 			</tr>
 		</table>
 		
 		<button type="submit">수정</button>
-		<button type="search">조회</button>
+		<button type="button">조회</button>
 	</form>
 	</div>
 	
@@ -58,7 +58,7 @@
 	}
 	
 	function moveList(){
-		location.href="member.jsp";
+		location.href="list.jsp";
 	}
 </script>
 </html>
