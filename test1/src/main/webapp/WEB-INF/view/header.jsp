@@ -6,8 +6,7 @@
 	text-align: center;
 	line-height: 80px;
 	font-size: 30px;
-	height: 80px;"
->쇼핑몰 회원관리 version 1.0 ver</header>
+	height: 80px;">쇼핑몰 회원관리 version 1.0 ver</header>
 <nav style="
 	height: 60px;
 	background-color: lightblue;
@@ -18,7 +17,7 @@
     <div>
         <a href="<%=request.getContextPath() %>/member/insert">회원등록</a>
         &nbsp; &nbsp;
-        <a href="<%=request.getContextPath() %>/member/modify">회원목록조회/수정</a>
+        <a href="<%=request.getContextPath() %>/member/list">회원목록조회/수정</a>
         &nbsp; &nbsp;
         <a href="<%=request.getContextPath() %>/member/money">회원매출조회</a>
         &nbsp; &nbsp; &nbsp; &nbsp;
