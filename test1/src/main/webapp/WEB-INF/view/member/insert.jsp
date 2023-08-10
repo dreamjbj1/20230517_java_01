@@ -5,9 +5,19 @@
 <head>
 <meta charset="UTF-8">
 <title>회원등록</title>
+	<style>
+		.container{
+			display: flex;
+  			justify-content: center; 
+  			align-items: center; 
+ 			margin: 100px 0;
+		}
+	</style>
 </head>
 <body>
-	<h2>회원등록</h2>
+<jsp:include page="/WEB-INF/view/header.jsp" />
+
+	<h2 style = "text-align: center">홈쇼핑 회원등록</h2>
 		<div class="container">
 	<form action="<%=request.getContextPath() %>/member/insert.do" method="post">
 		<table border="1">
@@ -47,6 +57,6 @@
 	</form>
 	</div>
 	
-	
+<jsp:include page="/WEB-INF/view/footer.jsp" />
 </body>
 </html>

@@ -7,23 +7,25 @@
 <head>
 <meta charset="UTF-8">
 <title>회원정보</title>
+<%@include file="/WEB-INF/view/link.jsp" %>
+	<style>
+	.wrap-content{
+		display:flex;
+  		justify-content: center; /* 수평 가운데 정렬 */
+  		align-items: center; /* 수직 가운데 정렬 */
+ 		margin: 100px 0 ;
+	}
+	</style>
 </head>
 <body>
-	<h2>회원 정보</h2>
-	
-	<div><a href="<%=request.getContextPath() %>/member/insert">회원등록</a>
-	
-	<a href="<%=request.getContextPath() %>/member/modify">회원목록조회/수정</a>
-	
-	<a href="<%=request.getContextPath() %>/member/money">회원매출조회</a>
-	
-	<a href="<%=request.getContextPath() %>/member/list">홈으로</a></div>
+<jsp:include page="/WEB-INF/view/header.jsp" />
 
+<h2 style = "text-align: center">회원목록조회/수정</h2>
 	<%
 		List<MemberDto> volist = (List<MemberDto>)request.getAttribute("MemberList");
 	%>
-	
-	<table border="1">
+<div  class="wrap-content">
+	<table border = "1">
 		<tr>
 		<td>회원번호</td>
 		<td>회원성명</td>
@@ -52,5 +54,7 @@
 		}
 		%>
 	</table>
+</div>
+<jsp:include page="/WEB-INF/view/footer.jsp" />
 </body>
 </html>
