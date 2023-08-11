@@ -7,13 +7,31 @@
 <head>
 <meta charset="UTF-8">
 <title>회원매출조회</title>
+	<style>
+	#title{
+		background-color: lightgray;
+		text-align: center;
+		margin: -10px;
+		height: 40px;
+		line-height: 40px;
+	}
+	.container{
+			display: flex;
+  			justify-content: center; 
+  			align-items: center; 
+ 			margin: 100px 0;
+ 			
+		}
+	</style>
 </head>
 <body>
-	<h2>회원매출조회</h2>
+<jsp:include page="/WEB-INF/view/header.jsp" />
+
+	<h2 id = "title">회원매출조회</h2>
 	<%
 	List<MoneyDto> volist = (List<MoneyDto>)request.getAttribute("MoneyList");
 	%>
-	
+	<div class="container">
 	<table border="1">
 	<tr>
 		<td>회원번호</td>
@@ -36,5 +54,7 @@
 		}
 		%>
 	</table>
+	</div>
+<jsp:include page="/WEB-INF/view/footer.jsp" />
 </body>
 </html>

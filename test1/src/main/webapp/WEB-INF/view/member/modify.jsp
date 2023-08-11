@@ -19,6 +19,9 @@
  			margin: 100px 0;
  			
 		}
+		#button{
+			border: 1px solid #000;
+			text-align: center;
 	</style>
 <body>
 <jsp:include page="/WEB-INF/view/header.jsp" />
