@@ -6,6 +6,7 @@
 	text-align: center;
 	line-height: 80px;
 	font-size: 30px;
+	margin: -10px ;
 	height: 80px;">쇼핑몰 회원관리 version 1.0 ver</header>
 <nav style="
 	height: 60px;
@@ -13,6 +14,7 @@
 	color: white;
 	padding-left: 20px;
 	line-height: 60px;
+	margin: -10px
 ">
     <div>
         <a href="<%=request.getContextPath() %>/member/insert">회원등록</a>

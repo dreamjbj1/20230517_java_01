@@ -62,7 +62,7 @@
 			</tr>
 		</table>
 	<div id = "button">
-		<button type="submit">수정</button>
+		<button type="su bmit">수정</button>
 		<button type="button">조회</button>
 	</div>	
 	</form>

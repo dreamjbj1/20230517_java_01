@@ -96,7 +96,7 @@ INSERT INTO SALES_INFO  VALUES ('100004', '20160010','3000','1','3000','A007','2
 SELECT * FROM SALES_INFO;
 
 
-
+drop table money;
 CREATE TABLE money AS
 SELECT A.CUSTNO, A.CUSTNAME, A.GRADE, SUM(B.PRICE) AS TOTAL 
 FROM customer_info A 
@@ -104,9 +104,38 @@ JOIN sales_info B ON A.CUSTNO = B.CUSTNO
 GROUP BY A.CUSTNO, A.CUSTNAME, A.GRADE
 ORDER BY TOTAL DESC;
 
-SELECT A.CUSTNO, A.CUSTNAME, A.GRADE, SUM(B.PRICE) AS TOTAL FROM customer_info A 
-JOIN sales_info B ON A.CUSTNO = B.CUSTNO 
-GROUP BY(A.CUSTNO, A.CUSTNAME, A.GRADE) ORDER BY TOTAL DESC;
+CREATE TABLE money (
+    custno NUMBER,
+    custname VARCHAR2(255),
+    grade VARCHAR2(10),
+    total NUMBER
+);
+
+
+
+
+CREATE TABLE money AS
+SELECT
+    a.custno,
+    a.custname,
+    CASE
+        WHEN a.grade = 'A' THEN 'VIP'
+        WHEN a.grade = 'B' THEN '일반'
+        WHEN a.grade = 'C' THEN '직원'
+    END AS grade,
+    SUM(b.price) AS total
+FROM
+    customer_info a
+JOIN
+    sales_info b
+ON
+    a.custno = b.custno
+GROUP BY
+    a.custno,
+    a.custname,
+    a.grade
+ORDER BY
+    total DESC;
 
 
 

@@ -8,13 +8,13 @@
 <meta charset="UTF-8">
 <title>회원매출조회</title>
 	<style>
-	#title{
+ 	#title{
 		background-color: lightgray;
 		text-align: center;
 		margin: -10px;
 		height: 40px;
 		line-height: 40px;
-	}
+	} 
 	.container{
 			display: flex;
   			justify-content: center; 
