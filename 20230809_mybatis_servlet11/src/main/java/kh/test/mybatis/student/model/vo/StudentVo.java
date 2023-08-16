@@ -6,13 +6,16 @@ public class StudentVo {
 	private String studentName;
 	private String studentSsn;
 	private String studentAddress;
+//	view에서 입력받은 데이터가 있는 경우 String 
 	private String entranceDate;
+	// private Date entranceDate;
 	private String absenceYn;
 	private String coachProfessorNo;
 	
 	private String departmentName;
-
 	
+	
+
 	public StudentVo() {
 	}
 
@@ -109,5 +112,6 @@ public class StudentVo {
 	public void setDepartmentName(String departmentName) {
 		this.departmentName = departmentName;
 	}
+	
 	
 }
