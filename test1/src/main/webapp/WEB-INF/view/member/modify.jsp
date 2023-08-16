@@ -47,37 +47,47 @@
 				<td><input type="text" name="address" value="${mvo.address}"></td>
 			</tr>
 			</tr>
-				<tr>
+			<tr>
+    		<th>가입일자 yyyy-mm-dd</th>
+    		<td><input type="date" id="joinDateInput" name="joinDate" value="${mvo.joinDate} onchange="removeTimeFromDateInput();"></td>
+			</tr>
+		<%-- 		<tr>
 				<th>가입일자</th>
 				<td><input type="text" name="joinDate" value="${mvo.joinDate}"></td>
-			</tr>
+			</tr> --%>
 			<tr>
-					<th>고객등급[A:VIP,B:일반,C:직원]</th>
-					<td><input type="text" name="grade" value="${mvo.grade}"></td>
-				</tr>
-			</tr>
+    	<th>고객등급[A:VIP,B:일반,C:직원]</th>
+    	<td>
+        <select name="grade">
+            <option value="VIP" selected>A</option>
+            <option value="일반">B</option>
+            <option value="직원">C</option>
+        </select>
+    </td>
+	</tr>	
 				<tr>
 				<td>도시코드</td>
 				<td><input type="text" name="city" value="${mvo.city}"></td>
 			</tr>
 		</table>
-	<div id = "button">
-		<button type="su bmit">수정</button>
-		<button type="button">조회</button>
-	</div>	
+		<div id="button">
+    		<button type="submit" onclick="return Check();">수정</button>
+    		<button type="button" onclick="moveList();">홈으로</button>
+		</div>
 	</form>
 	</div>
 <jsp:include page="/WEB-INF/view/footer.jsp" />
 </body>
 
+
 <script>
-	function Check(){
-		alert("회원정보수정이 완료되었습니다.");
-		return true;
-	}
-	
-	function moveList(){
-		location.href="list.jsp";
-	}
+function Check() {
+    alert("회원정보 수정이 완료되었습니다.");
+    return true;
+}
+
+function moveList() {
+    location.href = "<%=request.getContextPath() %>/list";
+}
 </script>
 </html>

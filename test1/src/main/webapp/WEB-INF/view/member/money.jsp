@@ -22,6 +22,17 @@
  			margin: 100px 0;
  			
 		}
+	  table {
+        width: 80%; 
+        border-collapse: collapse; 
+        margin-top: 20px;
+    }
+    
+    th, td {
+        border: 1px solid black; 
+        padding: 8px; 
+        text-align: center;
+    }
 	</style>
 </head>
 <body>

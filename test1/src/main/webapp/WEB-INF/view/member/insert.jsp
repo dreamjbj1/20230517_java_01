@@ -53,28 +53,41 @@
 				<th>회원주소</th>
 				<td><input type="text" name="address"></td>
 			</tr>
-			</tr>
-				<tr>
-				<th>가입일자 yyyy-mm-dd</th>
-				<td><input type="text" name="joinDate"></td>
-			</tr>
 			<tr>
-					<th>고객등급[A:VIP,B:일반,C:직원]</th>
-					<td><input type="text" name="grade"></td>
-				</tr>
+    		<th>가입일자 yyyy-mm-dd</th>
+    		<td><input type="date" id="joinDateInput" name="joinDate" onchange="removeTimeFromDateInput();"></td>
 			</tr>
+		<tr>
+    	<th>고객등급[A:VIP,B:일반,C:직원]</th>
+    	<td>
+        <select name="grade">
+            <option value="VIP" selected>A</option>
+            <option value="일반">B</option>
+            <option value="직원">C</option>
+        </select>
+    </td>
+	</tr>	
 				<tr>
 				<td>도시코드</td>
 				<td><input type="text" name="city"></td>
 			</tr>
 		</table>
 	<div id = "button">
-		<button type="submit">등록</button>
-		<button type="button">조회</button>
+		<button type="submit" onclick="return Check();">등록</button>
+		<button type="button" onclick="moveList();">홈으로</button>
 	</div>	
 	</form>
 	</div>
 	
 <jsp:include page="/WEB-INF/view/footer.jsp" />
 </body>
+<script>	
+function Check() {
+    alert("회원정보 등록이 완료되었습니다.");
+    return true;
+}
+function moveList() {
+    location.href = "<%=request.getContextPath() %>/list";
+}
+</script>
 </html>

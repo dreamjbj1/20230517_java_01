@@ -67,7 +67,8 @@ public class MemberDao {
 	public List<MemberDto> MemberList() {
 		
 			List<MemberDto> result = null;
-			String query = "select * from CUSTOMER_INFO";
+			
+			String query = "select CUSTNO, CUSTNAME, PHONE, ADDRESS, to_char(joinDate, 'yyyy/mm/dd') AS joindate, Grade, City from CUSTOMER_INFO";
 			Connection conn = null;
 //			Statement stmt = null;
 			PreparedStatement pstmt = null;
