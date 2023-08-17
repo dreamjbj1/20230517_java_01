@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="member1">
+	
+	<resultMap type="MemberDto2" id="resultMap3">
+	<id property="CustNo" column="CUSTNO"/>
+	<result property="CustName" column="CUSTNAME"/>
+	<result property="Phone" column="PHONE"/>
+	<result property="Address" column="ADDRESS"/>
+	<result property="JoinDate" column="JOINDATE"/>
+	<result property="Grade" column="GRADE"/>
+	<result property="City" column="CITY"/>
+	</resultMap>
+	
+	<select id="selectList0" resultMap="resultMap3">
+		SELECT CUSTNO, CUSTNAME, PHONE, ADDRESS, to_char(JOINDATE, 'YYYY/MM/DD') AS JOINDATE, GRADE, CITY 
+		FROM CUSTOMER_INFO
+	</select>
+	<select id="selectOne0" resultMap="resultMap3" parameterType="int">
+			SELECT CUSTNO, CUSTNAME, PHONE, ADDRESS, to_char(JOINDATE, 'YYYY/MM/DD') AS JOINDATE, GRADE, CITY 
+			FROM CUSTOMER_INFO
+			WHERE CUSTNO = #{}
+	</select>
+	<select id="insert0" parameterType="MemberDto2">
+		INSERT INTO CUSTOMER_INFO (CUSTNO, CUSTNAME, PHONE, ADDRESS, JOINDATE, )
+	</select>
+</mapper>
