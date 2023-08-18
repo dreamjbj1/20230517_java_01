@@ -6,19 +6,22 @@ import org.apache.ibatis.session.SqlSession;
 
 import test1.jdbckh.member.model.dto.MemberDto;
 
-public class MemberDao{
-	
+public class MemberDao {
 
-public List<MemberDto> selectList(SqlSession session){
-	List<MemberDto> result = session.selectList("member1.selectList0");
-	return result;
+	public List<MemberDto> selectList(SqlSession session) {
+		List<MemberDto> result = session.selectList("member1.selectList0");
+		return result;
 	}
-
+	public MemberDto selectOne(SqlSession session, int abc) {
+		MemberDto result = session.selectOne("member1.selectOne0", abc);
+		return result;
+	}
+	public int insert(SqlSession session, MemberDto dto) {
+		int result = session.insert("member1.insert0", dto);
+		return result;
+	}
+	
 }
-
-
-
-
 
 //import static test1.jdbckh.common.jdbc.JdbcTemplate.*;
 //

@@ -5,10 +5,9 @@
  	<setting name="jdbcTypeForNull" value="NULL"/>
  </settings>
  <typeAliases>
- 	<typeAlias type="test1.jdbckh.member.model.dto.MemberDto" alias="MemberDto2"/>
- 	
+ 	<typeAlias type="test1.jdbckh.member.model.dto.MemberDto" alias="MemberDto"/>
  </typeAliases>
- <environments default="development`">
+ <environments default="development1">
  	<environment id="development1">
  	<transactionManager type="JDBC"></transactionManager>
  	<dataSource type="POOLED">

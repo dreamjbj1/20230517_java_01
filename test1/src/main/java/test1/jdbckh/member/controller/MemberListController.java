@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import test1.jdbckh.member.model.dao.MemberDao;
 import test1.jdbckh.member.model.dto.MemberDto;
+import test1.jdbckh.member.service.MemberService;
 
 /**
  * Servlet implementation class CustomerInfoListController
@@ -22,9 +23,12 @@ public class MemberListController extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
 		System.out.println("/member/list doGet()");
-		MemberDao dao = new MemberDao();
-		List<MemberDto> result = dao.MemberList();
-		request.setAttribute("MemberList", result);
+//		MemberDao dao = new MemberDao();
+//		List<MemberDto> result = dao.MemberList();
+//		request.setAttribute("MemberList", result);
+//		request.setAttribute("MemberList", new MemberService().selectList());
+//		request.getRequestDispatcher("/WEB-INF/view/member/list.jsp").forward(request, response);
+		request.setAttribute("MemberList", new MemberService().	MemberList());
 		request.getRequestDispatcher("/WEB-INF/view/member/list.jsp").forward(request, response);
 	}
 

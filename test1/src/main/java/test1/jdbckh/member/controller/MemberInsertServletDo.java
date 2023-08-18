@@ -55,7 +55,7 @@ public class MemberInsertServletDo extends HttpServlet {
 		dto.setJoinDate(joinDate);
 		dto.setGrade(grade);
 		dto.setCity(city);
-		
+		System.out.println("dto :"+dto);
 		int result = service.insertMember(dto);
 		response.sendRedirect(request.getContextPath()+"/member/list");
 }

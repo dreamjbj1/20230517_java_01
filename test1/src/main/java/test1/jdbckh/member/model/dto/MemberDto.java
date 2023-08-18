@@ -13,91 +13,91 @@ public class MemberDto{
 //	GRADE             CHAR(1)      
 //	CITY              CHAR(2)
 	
-	private int CustNo;
-	private String CustName;
-	private String Phone;
-	private String Address;
-	private String JoinDate;
-	private String Grade;
-	private String City;
+	private int custNo;
+	private String custName;
+	private String phone;
+	private String address;
+	private String joinDate;
+	private String grade;
+	private String city;
 	
 	public MemberDto() {
 	}
 
 	public MemberDto(int custNo, String custName, String phone, String address, String joinDate, String grade,
 			String city) {
-		this.CustNo = custNo;
-		this.CustName = custName;
-		this.Phone = phone;
-		this.Address = address;
-		this.JoinDate = joinDate;
-		this.Grade = grade;
-		this.City = city;
+		super();
+		this.custNo = custNo;
+		this.custName = custName;
+		this.phone = phone;
+		this.address = address;
+		this.joinDate = joinDate;
+		this.grade = grade;
+		this.city = city;
 	}
 
 	@Override
 	public String toString() {
-		return "MemberDto [CustNo=" + CustNo + ", CustName=" + CustName + ", Phone=" + Phone + ", Address=" + Address
-				+ ", JoinDate=" + JoinDate + ", Grade=" + Grade + ", City=" + City + "]";
+		return "MemberDto [custNo=" + custNo + ", custName=" + custName + ", phone=" + phone + ", address=" + address
+				+ ", joinDate=" + joinDate + ", grade=" + grade + ", city=" + city + "]";
 	}
 
 	public int getCustNo() {
-		return CustNo;
+		return custNo;
 	}
 
 	public void setCustNo(int custNo) {
-		CustNo = custNo;
+		this.custNo = custNo;
 	}
 
 	public String getCustName() {
-		return CustName;
+		return custName;
 	}
 
 	public void setCustName(String custName) {
-		CustName = custName;
+		this.custName = custName;
 	}
 
 	public String getPhone() {
-		return Phone;
+		return phone;
 	}
 
 	public void setPhone(String phone) {
-		Phone = phone;
+		this.phone = phone;
 	}
 
 	public String getAddress() {
-		return Address;
+		return address;
 	}
 
 	public void setAddress(String address) {
-		Address = address;
+		this.address = address;
 	}
 
 	public String getJoinDate() {
-		return JoinDate;
+		return joinDate;
 	}
 
 	public void setJoinDate(String joinDate) {
-		JoinDate = joinDate;
+		this.joinDate = joinDate;
 	}
 
 	public String getGrade() {
-		return Grade;
+		return grade;
 	}
 
 	public void setGrade(String grade) {
-		Grade = grade;
+		this.grade = grade;
 	}
 
 	public String getCity() {
-		return City;
+		return city;
 	}
 
 	public void setCity(String city) {
-		City = city;
+		this.city = city;
 	}
-	
-	
+
 	
 	
 }

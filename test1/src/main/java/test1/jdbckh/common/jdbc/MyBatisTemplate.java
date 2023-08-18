@@ -13,7 +13,9 @@ public class MyBatisTemplate {
 		SqlSession session = null;
 		try {
 			SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(Resources.getResourceAsStream("mybatis-config.xml"));
+			System.out.println ("factory :"+factory);
 			session = factory.openSession(autoCommit);
+			System.out.println ("session :"+session);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
