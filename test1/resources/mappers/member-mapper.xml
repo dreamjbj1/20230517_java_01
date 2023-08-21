@@ -16,7 +16,7 @@
 		SELECT CUSTNO, CUSTNAME, PHONE, ADDRESS, to_char(JOINDATE, 'YYYY/MM/DD') AS JOINDATE, GRADE, CITY
 		FROM CUSTOMER_INFO
 	</select>
-	 <select id="selectOne0" resultMap="MemberMap" parameterType="_int">
+	<select id="selectOne0" resultMap="MemberMap" parameterType="_int">
 		SELECT CUSTNO, CUSTNAME, PHONE, ADDRESS, to_char(JOINDATE, 'YYYY/MM/DD') AS
 		JOINDATE, GRADE, CITY
 		FROM CUSTOMER_INFO
@@ -27,5 +27,10 @@
 	INSERT INTO CUSTOMER_INFO
 	VALUES (seq_no.nextval, #{custName}, #{phone}, #{address}, to_date(#{joinDate}, 'YYYY-MM-DD'), #{grade}, #{city})
 	</insert> 
+	<update id="update0" parameterType="MemberDto">
+	UPDATE CUSTOMER_INFO SET CUSTNAME=#{custName}, PHONE=#{phone}, ADDRESS=#{address},
+	JOINDATE=#{joinDate}, GRADE=#{grade}, CITY=#{city} WHERE CUSTNO = #{custNo}
+	</update>
+
 
 </mapper>

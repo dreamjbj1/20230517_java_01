@@ -20,6 +20,10 @@ public class MemberDao {
 		int result = session.insert("member1.insert0", dto);
 		return result;
 	}
+	public int update(SqlSession session, MemberDto dto) {
+		int result = session.update("member1.update0", dto);
+		return result;
+	}
 	
 }
 

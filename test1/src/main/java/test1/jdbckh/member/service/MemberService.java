@@ -45,9 +45,9 @@ public class MemberService {
 			
 			public int update(MemberDto dto){
 				int result = -1;
-//				Connection conn = getConnection();
-//				result = dao.update(conn, dto);
-//				close(conn);
+				SqlSession session = MyBatisTemplate.getSqlSession(true);
+				result = dao.update(session, dto);
+				session.close();
 				return result;
 			}
 		
