@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="member">
+	<select id="selectList" resultType="MemberVo">
+		select mid, mname, memail, mpwd from member
+	</select>
+	<select id="selectOne" resultType="MemberVo" parameterType="string">
+	select mid, mname, memail, mpwd from member where mid=#{mid}
+	</select>
+	<insert id="insert" parameterType="MemberVo">
+	INSERT INTO * VALUES (#{mid}, #{mname}, #{memail}, #{mpwd}) 
+	</insert>
+</mapper>
