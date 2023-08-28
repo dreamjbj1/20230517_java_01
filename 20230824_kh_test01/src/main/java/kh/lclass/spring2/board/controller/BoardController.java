@@ -122,7 +122,7 @@ public class BoardController {
 	
 		// 절대위치 작성하면 됨.
 	
-	@ExceptionHandler
-	public void e() {
-	}	
+//	@ExceptionHandler
+//	public void e() {
+//	}	
 }

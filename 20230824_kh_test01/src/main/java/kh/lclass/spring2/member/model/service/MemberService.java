@@ -28,12 +28,12 @@ public class MemberService {
 		return memberDao.selectOne(mid);
 	}
 	public int insert(MemberVo vo) {
-		memberDao.update(vo);
+		memberDao.insert(vo);
 		return memberDao.insert(vo);
 	}
 	@Transactional
 	public int insertReply(MemberVo vo) {
-		memberDao.update(vo);
+		memberDao.insert(vo);
 		return memberDao.insert(vo);
 	}
 	public int update(MemberVo vo) {

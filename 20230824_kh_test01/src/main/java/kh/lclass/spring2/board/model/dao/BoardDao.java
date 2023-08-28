@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import kh.lclass.spring2.board.model.vo.BoardVo;
 
+
 @Repository
 public class BoardDao {
 	@Autowired
@@ -19,7 +20,7 @@ public class BoardDao {
 	public BoardVo selectOne(int bno) throws Exception {
 		return sqlSession.selectOne("board.selectOne", bno);
 	}
-	// insert 시 selectKey를 이용해 PK 값이 추가되어있는 자료형을 
+
 	// insert 시 selectKey를 이용해 PK 값이 추가되어있는 자료형
 		public BoardVo insert(BoardVo vo) throws Exception{
 			System.out.println("[insert before]"+vo);

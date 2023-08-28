@@ -37,6 +37,10 @@ public class MemberController {
 		model.addAttribute("membervo", memberService.selectOne(mid));
 		return "member/get";
 	}
+	@GetMapping("/login")
+	public String login(Model model) {
+		return "login";
+	}
 	@GetMapping("/member/insert")
 	public String insert() {
 		return "member/insert";
