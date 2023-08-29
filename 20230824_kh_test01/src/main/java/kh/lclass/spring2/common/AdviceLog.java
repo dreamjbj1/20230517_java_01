@@ -17,13 +17,13 @@ public class AdviceLog {
 	//@Pointcut("execution(타겟메소드)")
 	// .. 매개변수 없거나 여러개 있거나..
 	// * 1개 이상일때 씀.
-	@Pointcut("execution(public * kh.lclass.db1..*Dao.*(..))")
+	@Pointcut("execution(public * kh.lclass.spring2..*Dao.*(..))")
 	public void daoPointCut() {}
 	
-	@Pointcut("execution(public * kh.lclass.db1..*Service.*(..))")
+	@Pointcut("execution(public * kh.lclass.spring2..*Service.*(..))")
 	public void servicePointCut() {}
 	
-	@Pointcut("execution(public * kh.lclass.db1..*Controller.*(..))")
+	@Pointcut("execution(public * kh.lclass.spring2..*Controller.*(..))")
 	public void controllerPointCut() {}
 	
 //	@Before("daoPointCut()")

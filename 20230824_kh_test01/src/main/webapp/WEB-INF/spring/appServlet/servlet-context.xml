@@ -42,10 +42,10 @@
 	 -->
 		
 	<!-- Interceptor 인터셉터 -->
-	<!-- Interceptor 로그인 객체 생성 -->
-	<beans:bean class="kh.lclass.spring2.common.LoginInterceptor" id="loginInterceptor"/>
+	<!-- Interceptor 로그인 객체 생성(implemanets HandlerInterceptor)생성 -->
+<!-- 	<beans:bean class="kh.lclass.spring2.common.LoginInterceptor" id="loginInterceptor"/>
 	<interceptors>
-		<!-- Interceptor 로그인 설정 -->
+		Interceptor 로그인 설정
 		<interceptor>
 			<mapping path="/**"/>
 			<exclude-mapping path="/resources/**"/>
@@ -56,6 +56,12 @@
 			<exclude-mapping path="/shop/**"/>
 			<beans:ref bean="loginInterceptor"/>
 		</interceptor>		
-	</interceptors>
+	</interceptors> -->
+	
+	<!-- File Upload : bean 생성  -->
+	<beans:bean class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	</beans:bean>
+	
+	
 	
 </beans:beans>
