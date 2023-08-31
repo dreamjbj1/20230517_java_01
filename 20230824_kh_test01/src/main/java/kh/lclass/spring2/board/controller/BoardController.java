@@ -1,5 +1,6 @@
 package kh.lclass.spring2.board.controller;
 
+import java.security.Principal;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,6 +12,9 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartRequest;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -54,10 +58,7 @@ public class BoardController {
 			// 방법 1 , HttpServletRequest request
 			, int bno // 방법 2
 			, String a
-			) throws Exception {
-		System.out.println(bno);
-		System.out.println(a);
-		
+			) throws Exception {	
 		// JSP --> Controller 데이터
 		// 방법 1 		int bno = Integer.parseInt(request.getParameter("bno"));
 		
@@ -81,6 +82,11 @@ public class BoardController {
 			// 방법 1 HttpServletRequest request
 			BoardVo vo
 			, String btitle
+			, Principal principal
+			, MultipartRequest multReq // file 여러개
+			, MultipartFile multiFile // file 1개
+			, @RequestParam(name = "updoadFile1") MultipartFile file1
+			, @RequestParam(name = "updoadFile2") MultipartFile file2
 			) { // 메소드 내부에서 처리함. ExceptionHandler로 가지 않도록 함
 		// 
 		String viewPage = "redirect:/";

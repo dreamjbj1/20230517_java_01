@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class MemberDto{
 	
-// vo -> 자료저장
+// 	vo -> 자료저장
 //	CUSTNO   NOT NULL NUMBER(6)    
 //	CUSTNAME          VARCHAR2(20) 
 //	PHONE             VARCHAR2(13) 

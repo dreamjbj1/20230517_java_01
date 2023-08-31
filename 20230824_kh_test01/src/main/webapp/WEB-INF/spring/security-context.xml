@@ -6,7 +6,7 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
 		http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-5.7.xsd">
-
+		
 	<security:http>
 		<!-- 대부분의 페이지를 permit 확인하는 경우 
 		isAnonymous() 또는 permitAll 페이지를 각각 지정해야함.
@@ -19,15 +19,23 @@
 		1. http://localhost:8090/db1/board/insert - 진입가능
 		2. http://localhost:8090/db1/member/list -진입불가 -login페이지 보이지
 		 -->
-		<security:intercept-url pattern="/**" access="hasRole('R_M')" />
-		<security:form-login/>
+		<security:intercept-url pattern="/resources/**" access="permitAll" />
+		<security:intercept-url pattern="/error/**" access="permitAll" />
+		
+		<security:intercept-url pattern="/board/**" access="permitAll" />
+		<security:intercept-url pattern="/member/**" access="hasRole('R_M')" />
+		<security:intercept-url pattern="/admin/**" access="hasRole('R_A')" />
+		<security:form-login login-page="/login" 
+							authentication-success-handler-ref="customLoginSuccess"
+							authentication-failure-url="/login"
+		/>
 		
 		<security:logout logout-url="/user/logout" 
 							logout-success-url="/board/list"
 							invalidate-session="true"
+							delete-cookies="remember-me,JSESSION_ID"
 		/>
 	</security:http>
-
   	<!-- 
   	1. url pattern 확인을 위한 임시 로그인 성공 여부 확인 - 아래 name, password
 	
@@ -73,11 +81,11 @@
 	-->
 	
 	
-    <bean id="bCryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"></bean>
+        <bean id="bCryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"></bean>
 	<!-- 
     <bean id="customAuthenticationProvider" class="kim.spring.ej.security.CustomAuthenticationProvider"></bean>
     <bean id="customUserDetailsService" class="kim.spring.ej.security.CustomUserDetailsServiceImpl"></bean>
     <bean id="customAccessFailure" class="kim.spring.ej.security.CustomAccessFailureHandler"></bean>
-    <bean id="customLoginSuccess" class="kim.spring.ej.security.CustomLoginSuccessHandler"></bean>
      -->
+    <bean id="customLoginSuccess" class="kh.lclass.spring2.common.CustomLoginSuccessHandler"></bean>
 </beans>
