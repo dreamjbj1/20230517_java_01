@@ -8,6 +8,8 @@ drop user c##scott;
 
 alter session set "_ORACLE_SCRIPT"=true;
 create user kh identified by kh;
+create user fpdml identified by fpdml;
+grant connect, resource, dba to fpdml;
 create user scott identified by tiger;
 
 
