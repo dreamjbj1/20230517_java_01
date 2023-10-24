@@ -35,13 +35,13 @@
 		
 	</select>
 	
-	<select id="MainListTotalCount" parameterType="String" resultType="int">
-	
-		SELECT count(*) FROM PRO_BOARD 
-		 <if test="searchWord != null">
-			WHERE title LIKE '%' || #{searchWord} || '%'
-		</if>
-	</select>
+		<select id="MainListTotalCount" parameterType="String" resultType="int">
+		
+			SELECT count(*) FROM PRO_BOARD 
+			 <if test="searchWord != null">
+				WHERE title LIKE '%' || #{searchWord} || '%'
+			</if>
+		</select>
 	
 	<select id="GetByOneList" parameterType="int" resultType="semiProject.board.dto.BoardDTO">
 	

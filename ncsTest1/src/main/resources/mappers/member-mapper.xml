@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="member">
+<resultMap type="Member" id="memberResultSet">
+<result property="memberId" column="MEMBER_ID"/>
+<result property="memberPwd" column="MEMBER_PWD"/>
+<result property="memberNm" column="MEMBER_NM"/>
+<result property="memberEnrollDt" column="MEMBER_ENROLL_DT"/>
+</resultMap>
+
+<select id="loginMember" resultMap="memberResultSet">
+	select * from MEMBER where member_ID = #{memberID} and MEMBER_PWD={memberPwd}
+</select>
+ 
+
+ <insert id="loginMember" parameterMap="Member">
+ 	insert into MEMBER VALUES #{memberId}, #{memberPwd}, #{memberNm}, DEFAULT);
+ </insert>
+ 
+</mapper>
+
+
+<!-- 1) VO 클래스와 Member 테이블 조회 결과를 매핑할 resultMap 작성 (id="memberResultSet")
+2) 로그인 기능을 수행하기 위한 select 엘리먼트 작성 (id="loginMember) -->
