@@ -16,6 +16,9 @@
 		SELECT CUSTNO, CUSTNAME, PHONE, ADDRESS, to_char(JOINDATE, 'YYYY/MM/DD') AS JOINDATE, GRADE, CITY
 		FROM CUSTOMER_INFO
 	</select>
+	<!-- <select>
+	select * from member
+	</select> -->
 	<select id="selectOne0" resultMap="MemberMap" parameterType="_int">
 		SELECT CUSTNO, CUSTNAME, PHONE, ADDRESS, to_char(JOINDATE, 'YYYY/MM/DD') AS
 		JOINDATE, GRADE, CITY
