@@ -33,7 +33,7 @@
 <body>
 <jsp:include page="/WEB-INF/view/header.jsp" />
 
-	<h2 id ="title"">홈쇼핑 회원등록</h2>
+	<h2 id ="title"">홈쇼핑 회원등록 관리</h2>
 		<div class="container">
 	<form action="<%=request.getContextPath() %>/member/insert.do" method="post">
 		<table border="1">
