@@ -133,8 +133,8 @@ button:hover {
             </thead>
             <tbody>
             
-            <c:forEach items="${BoardMainList }" var = "dto">
-                <tr>
+	            <c:forEach items="${BoardMainList}" var = "dto">
+	                <tr>
                     <td style="text-align:center;">${dto.board_id}</td>
                     <td>${dto.title}</td>
                     <td>${dto.content}</td>
@@ -143,6 +143,7 @@ button:hover {
                     <td>${dto.modifyDate}</td>
                    
                     <td style="text-align:center;"><a href = "<%=request.getContextPath() %>/Board/update?board_id=${dto.board_id}">수정</a></td>
+                    
                     <td style="text-align:center;">
                     <form action ="<%=request.getContextPath() %>/Board/delete" method = "post">
                     	<input type="hidden" value = "${dto.board_id}" name="board_id"/>

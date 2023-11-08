@@ -69,9 +69,7 @@ nav a {
         <nav>
             <ul>
             	<li><a href="<%=request.getContextPath() %>/Board">리스트 보기</a></li>
-                <li><a href="<%=request.getContextPath() %>/Board/write">글쓰기</a></li>
-                <li><a href="#">메뉴2</a></li>
-                <li><a href="#">메뉴3</a></li>
+                <li><a href="<%=request.getContextPath() %>/Board/write">글작성하기</a></li>
             </ul>
         </nav>
     </header>
