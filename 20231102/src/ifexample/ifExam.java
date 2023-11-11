@@ -3,7 +3,7 @@ package ifexample;
 public class ifExam {
 
 	public static void main(String[] args) {
-		int score = 60;
+		int score = 50;
 		char grade; 
 		if(score >= 90) {
 			grade = 'A';	
